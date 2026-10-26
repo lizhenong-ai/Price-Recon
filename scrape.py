@@ -248,9 +248,9 @@ def to_usd(value, cur):
     if value is None:
         return None
     rate = FX.get((cur or "USD").upper())
-    if not rate:
-        return round(value, 2)  # unknown currency -> assume already USD
-    return round(value / rate, 2)
+    v = value / rate if rate else value   # unknown currency -> assume already USD
+    # Keep sub-dollar prices precise (a Diamond Lock is ~$0.05).
+    return round(v, 4 if v < 1 else 2)
 
 
 def parse_price_currency(text):
@@ -1493,6 +1493,107 @@ async def adapter_g2a(page, url, denom):
     return parse_price_currency(raw) if raw else await generic_extract(page, url, denom)
 
 
+
+# --- Growtopia locks (PlayerAuctions / Eldorado / iGVault) ------------------
+# Every price is converted to G2G's unit: USD for ONE lock. Offers are often
+# bundles ("50x Diamond Locks"), so each offer's price is divided by the lock
+# count in its title, and the cheapest per-lock price wins.
+LOCK_RE = re.compile(r"(?:(\d[\d,]*)\s*x?\s*)?(world|diamond|blue\s*gem)\s*locks?", re.I)
+
+
+def lock_target(pname):
+    m = LOCK_RE.search(pname or "")
+    return re.sub(r"\s+", " ", m.group(2).lower()) if m else None
+
+
+def lock_count(title, target):
+    # The FIRST lock named in a title is what the offer sells, e.g.
+    # "100x Diamond Locks (1x Blue Gem Lock)" -> 100 Diamond Locks.
+    m = LOCK_RE.search(title or "")
+    if not m or re.sub(r"\s+", " ", m.group(2).lower()) != target:
+        return None
+    return int(m.group(1).replace(",", "")) if m.group(1) else 1
+
+
+def cheapest_per_lock(offers, target):
+    """offers: [(title, price_usd, units_per_price)] -> lowest USD per lock."""
+    best = None
+    for title, price, per in offers:
+        n = lock_count(title, target)
+        if not n or not price or price <= 0:
+            continue
+        v = price / (n * (per or 1))
+        best = v if best is None or v < best else best
+    return best
+
+
+async def adapter_playerauctions(page, url, denom):
+    # Search listing: each row shows "$X / N" (price per N offer-units) and a
+    # title such as "[Best Deal] 50x Diamond Locks" giving locks per unit.
+    target = lock_target(denom.get("pname"))
+    if not target:
+        return await generic_extract(page, url, denom)
+    rows = await page.evaluate(r"""() => {
+      const out = [];
+      for (const el of document.querySelectorAll('body *')) {
+        if (el.children.length) continue;
+        const t = (el.textContent || '').trim();
+        if (!/^\$\s*[\d,.]+\s*\/\s*\d+$/.test(t)) continue;
+        let row = el;
+        while (row.parentElement && !/buy\s*now/i.test(row.innerText || '')) row = row.parentElement;
+        out.push([row.innerText || '', t]);
+      }
+      return out;
+    }""")
+    offers = []
+    for text, unit in rows or []:
+        m = re.match(r"\$\s*([\d,.]+)\s*/\s*(\d+)", unit)
+        if m:
+            offers.append((text, float(m.group(1).replace(",", "")), int(m.group(2))))
+    best = cheapest_per_lock(offers, target)
+    return (best, "USD") if best else None
+
+
+async def adapter_eldorado(page, url, denom):
+    # Locks listing (".../g/...?growtopia-lock-type=...&offerSortingCriterion=Cheapest"):
+    # every seller shows "$X / unit" where one unit is one lock. Item pages
+    # (/oi/...) also show unrelated "More like this" offers, so they keep the
+    # generic reader.
+    if "/g/" not in urlparse(url).path:
+        return await generic_extract(page, url, denom)
+    body = await page.inner_text("body")
+    vals = [float(v.replace(",", "")) for v in re.findall(r"\$\s*([\d,]*\.?\d+)\s*/\s*unit", body)]
+    return (min(vals), "USD") if vals else None
+
+
+async def adapter_igv(page, url, denom):
+    target = lock_target(denom.get("pname"))
+    path = urlparse(url).path.rstrip("/")
+    if target and path.endswith("/items"):
+        # Game items page: each card's text is title, "Server/Platform: ...",
+        # "Category: ...", "N Offers", then "From" and "$0.24".
+        lines = [l.strip() for l in (await page.inner_text("body")).split("\n") if l.strip()]
+        offers, buf = [], []
+        for k, line in enumerate(lines):
+            nxt = lines[k + 1] if k + 1 < len(lines) else ""
+            if line == "From" and re.match(r"^\$\s*[\d,]*\.?\d+$", nxt):
+                titles = [b for b in buf if not re.match(r"^(Server/Platform|Category)\b|^\d+ Offers?$", b)]
+                if titles:
+                    offers.append((titles[-1], float(nxt.lstrip("$ ").replace(",", "")), 1))
+                buf = []
+            elif not line.startswith("$"):
+                buf.append(line)
+        best = cheapest_per_lock(offers, target)
+        if best:
+            return (best, "USD")
+    # Product page with a seller list ("$0.099/Unit").
+    body = await page.inner_text("body")
+    vals = [float(v.replace(",", "")) for v in re.findall(r"\$\s*([\d,]*\.?\d+)\s*/\s*Unit", body)]
+    if vals:
+        return (min(vals), "USD")
+    return await generic_extract(page, url, denom)
+
+
 # domain -> adapter. Unlisted domains use generic_extract.
 ADAPTERS = {
     "codashop.com": adapter_codashop,
@@ -1506,6 +1607,9 @@ ADAPTERS = {
     "offgamers.com": adapter_offgamers,
     "g2g.com": adapter_g2g,
     "g2a.com": adapter_g2a,
+    "playerauctions.com": adapter_playerauctions,
+    "eldorado.gg": adapter_eldorado,
+    "igv.com": adapter_igv,
 }
 
 
@@ -2144,6 +2248,7 @@ async def fetch_one(context, task, results, report):
                 denom["words"] = merged_words
                 if denom.get("amount") is None and nd.get("amount") is not None:
                     denom["amount"] = nd["amount"]
+            denom["pname"] = task["pname"]        # e.g. which Growtopia lock to price
             result = await fn(page, url, denom)   # (value, currency), NA, or None
             # Sold-out guard: if no confident price came back, check whether the
             # page says the item is unavailable -> record N/A instead of nothing
