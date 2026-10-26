@@ -2438,7 +2438,9 @@ def main():
     t0 = time.time()
     results, report = asyncio.run(run(tasks))
 
-    if ARGS.merge and OUT_FILE.exists():
+    # A partial run (--categories / --comps / --limit) must merge, or it would
+    # replace prices.json with just the subset it scraped.
+    if (ARGS.merge or ARGS.categories or ARGS.comps or ARGS.limit) and OUT_FILE.exists():
         # Patch this run's comps into the existing prices.json instead of
         # overwriting it. Lets a local OG/G2G run coexist with the cloud run.
         try:
