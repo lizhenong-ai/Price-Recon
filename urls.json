@@ -13513,6 +13513,195 @@
           "urls": {}
         }
       ]
+    },
+    "Roblox Items": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Grow a Garden 2 (Dragon's Breath Seed)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3A20b25ec6%7C911c67d6%3A2380f8ad&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/grow-a-garden-2-shop/i/430?searchQuery=Dragon%27s%20Breath%20Seed&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "dragon'?s?\\s*breath",
+                "exclude": "\\+|bundle|\\band\\b|&"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/grow-a-garden-2/items",
+              "note": "",
+              "match": {
+                "include": "dragon'?s?\\s*breath\\s*seed",
+                "exclude": "\\+|bundle|\\band\\b|&"
+              }
+            }
+          }
+        },
+        {
+          "name": "Grow a Garden 2 (Super Watering Can)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3A20b25ec6%7Cb0622f50%3A4528a503&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/grow-a-garden-2-shop/i/430?searchQuery=Super%20Watering%20Can&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "super\\s*watering\\s*can",
+                "exclude": "cider|syrup|\\+|bundle|\\band\\b|&"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/grow-a-garden-2/items",
+              "note": "",
+              "match": {
+                "include": "super\\s*watering\\s*can",
+                "exclude": "cider|syrup|\\+|bundle|\\band\\b|&"
+              }
+            }
+          }
+        },
+        {
+          "name": "Grow a Garden 2 (Star Fruit Seed)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3A20b25ec6%7C911c67d6%3A1e2c3456&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/grow-a-garden-2-shop/i/430?searchQuery=Star%20Fruit%20Seed&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "star\\s*fruit",
+                "exclude": "\\+|bundle|\\band\\b|&"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/grow-a-garden-2/items",
+              "note": "",
+              "match": {
+                "include": "star\\s*fruit\\s*seed",
+                "exclude": "\\+|bundle|\\band\\b|&"
+              }
+            }
+          }
+        },
+        {
+          "name": "Blox Fruits (10000 Simulation Data)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3A4d57fbb9%7Cb56844f3%3A52b7d714&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/blox-fruits-shop/i/202-2-0?searchQuery=Simulation%20Data&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "sim(ulation)?\\s*data",
+                "exclude": "\\+|bundle|\\band\\b|&",
+                "count": "(\\d[\\d,]*)\\s*(k)?\\s*(?:sim|simulation)",
+                "per": 10000
+              }
+            }
+          }
+        },
+        {
+          "name": "Blox Fruits (Portal Permanent)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3A4d57fbb9%7C9e102441%3Ae0075784%7C3d3fe0fc%3Affa105ea&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/blox-fruits-shop/i/202-2-0?searchQuery=Portal%20Permanent&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "portal[\\s\\S]*\\bperm|\\bperm[\\s\\S]*portal",
+                "exclude": "non[\\s-]*perm|physical|\\+|bundle|\\band\\b|&"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/product-8147/Blox-Fruits-Portal.html",
+              "note": ""
+            }
+          }
+        },
+        {
+          "name": "Blox Fruits (Dragon Permanent)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3A4d57fbb9%7C9e102441%3Aab789500%7C3d3fe0fc%3Affa105ea&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/blox-fruits-shop/i/202-2-0?searchQuery=Dragon%20Permanent&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "dragon[\\s\\S]*\\bperm|\\bperm[\\s\\S]*dragon",
+                "exclude": "non[\\s-]*perm|physical|\\+|bundle|\\band\\b|&"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/product-248543/RBL-Blox-Fruits-Dragon.html",
+              "note": ""
+            }
+          }
+        },
+        {
+          "name": "Anime Expeditions (Premium Pass)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3Aa7ffbe76%7Ce759a516%3Aff3db6a1&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/anime-expeditions-shop/i/440?searchQuery=Premium%20Pass&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "premium\\s*(battle\\s*)?pass",
+                "exclude": "vip|shiny|villain|\\+|bundle|\\band\\b|&"
+              }
+            }
+          }
+        },
+        {
+          "name": "Anime Expeditions (Shiny Hunter)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3Aa7ffbe76%7Ce759a516%3A534205ee&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/anime-expeditions-shop/i/440?searchQuery=Shiny%20Hunter&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "shiny\\s*hunter",
+                "exclude": "vip|premium|\\+|bundle|\\band\\b|&"
+              }
+            }
+          }
+        },
+        {
+          "name": "Anime Expeditions (VIP 399R)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/rbl-item/offer/group?fa=b08c318c%3Aa7ffbe76%7Ce759a516%3A161d945a&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/anime-expeditions-shop/i/440?searchQuery=VIP&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "\\bvip\\b",
+                "exclude": "premium|shiny|villain|display|carry|boost|\\+|bundle|\\band\\b|&"
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

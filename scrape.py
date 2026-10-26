@@ -249,8 +249,9 @@ def to_usd(value, cur):
         return None
     rate = FX.get((cur or "USD").upper())
     v = value / rate if rate else value   # unknown currency -> assume already USD
-    # Keep sub-dollar prices precise (a Diamond Lock is ~$0.05).
-    return round(v, 4 if v < 1 else 2)
+    # Keep sub-dollar prices precise (a Diamond Lock is ~$0.05, a Grow a Garden 2
+    # watering can ~$0.0006).
+    return round(v, 2 if v >= 1 else 4 if v >= 0.01 else 6)
 
 
 def parse_price_currency(text):
@@ -1527,11 +1528,38 @@ def cheapest_per_lock(offers, target):
     return best
 
 
+def cheapest_matching(offers, rule):
+    """Secondary-market listings are free-text, so a product can carry a match
+    rule in urls.json: {"include": regex, "exclude": regex, "count": regex whose
+    group 1 is the bundle size (group 2 "k" = thousands), "per": G2G unit size}.
+    offers: [(title_text, price_usd, units_per_price)] -> lowest USD per G2G unit."""
+    inc = re.compile(rule.get("include") or ".", re.I)
+    exc = re.compile(rule["exclude"], re.I) if rule.get("exclude") else None
+    cnt = re.compile(rule.get("count") or r"\bx\s*(\d[\d,]*)\b|\b(\d[\d,]*)\s*x\b", re.I)
+    per = float(rule.get("per") or 1)
+    best = None
+    for title, price, units in offers:
+        if not price or price <= 0 or not inc.search(title) or (exc and exc.search(title)):
+            continue
+        n = 1.0
+        m = cnt.search(title)
+        if m:
+            groups = [g for g in m.groups() if g]
+            if groups and re.match(r"\d", groups[0]):
+                n = float(groups[0].replace(",", ""))
+                if len(groups) > 1 and groups[1].lower() == "k":
+                    n *= 1000
+        v = price / (units or 1) / n * per
+        best = v if best is None or v < best else best
+    return best
+
+
 async def adapter_playerauctions(page, url, denom):
     # Search listing: each row shows "$X / N" (price per N offer-units) and a
     # title such as "[Best Deal] 50x Diamond Locks" giving locks per unit.
     target = lock_target(denom.get("pname"))
-    if not target:
+    rule = denom.get("match")
+    if not target and not rule:
         return await generic_extract(page, url, denom)
     rows = await page.evaluate(r"""() => {
       const out = [];
@@ -1550,7 +1578,7 @@ async def adapter_playerauctions(page, url, denom):
         m = re.match(r"\$\s*([\d,.]+)\s*/\s*(\d+)", unit)
         if m:
             offers.append((text, float(m.group(1).replace(",", "")), int(m.group(2))))
-    best = cheapest_per_lock(offers, target)
+    best = cheapest_matching(offers, rule) if rule else cheapest_per_lock(offers, target)
     return (best, "USD") if best else None
 
 
@@ -1559,6 +1587,27 @@ async def adapter_eldorado(page, url, denom):
     # every seller shows "$X / unit" where one unit is one lock. Item pages
     # (/oi/...) also show unrelated "More like this" offers, so they keep the
     # generic reader.
+    rule = denom.get("match")
+    if rule:
+        # Page text after "N items found": each offer is a few lines (tags such as
+        # "Permanent", title, seller, rating) ending in "$2.97 / unit"; structured
+        # items (e.g. Grow a Garden 2 seeds) are cards: name, "From", "$0.05".
+        lines = [l.strip() for l in (await page.inner_text("body")).split("\n") if l.strip()]
+        start = next((k + 1 for k, l in enumerate(lines) if re.search(r"\bitems? found$", l)), 0)
+        offers, buf = [], []
+        for k in range(start, len(lines)):
+            line = lines[k]
+            m = re.match(r"^\$\s*([\d,]*\.?\d+)\s*/\s*unit$", line)
+            if m:
+                offers.append(("\n".join(buf), float(m.group(1).replace(",", "")), 1))
+                buf = []
+            elif line == "From" and k + 1 < len(lines) and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]):
+                offers.append((buf[-1] if buf else "", float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
+                buf = []
+            elif not line.startswith("$"):
+                buf.append(line)
+        best = cheapest_matching(offers, rule)
+        return (best, "USD") if best else None
     if "/g/" not in urlparse(url).path:
         return await generic_extract(page, url, denom)
     body = await page.inner_text("body")
@@ -1567,7 +1616,7 @@ async def adapter_eldorado(page, url, denom):
 
 
 async def adapter_igv(page, url, denom):
-    target = lock_target(denom.get("pname"))
+    target = None if denom.get("match") else lock_target(denom.get("pname"))
     path = urlparse(url).path.rstrip("/")
     if target and path.endswith("/items"):
         # Game items page: each card's text is title, "Server/Platform: ...",
@@ -1586,6 +1635,18 @@ async def adapter_igv(page, url, denom):
         best = cheapest_per_lock(offers, target)
         if best:
             return (best, "USD")
+    rule = denom.get("match")
+    if rule and path.endswith("/items"):
+        lines = [l.strip() for l in (await page.inner_text("body")).split("\n") if l.strip()]
+        offers = []
+        for k in range(1, len(lines) - 1):
+            if lines[k] == "From" and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]):
+                # card: title, "Item Type: ...", "From", "$12.00"
+                title = next((lines[j] for j in range(k - 1, max(k - 4, -1), -1)
+                              if not re.match(r"^(Item Type|Server/Platform|Category)\b|^\d+ Offers?$", lines[j])), "")
+                offers.append((title, float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
+        best = cheapest_matching(offers, rule)
+        return (best, "USD") if best else NA
     # Product page with a seller list ("$0.099/Unit").
     body = await page.inner_text("body")
     vals = [float(v.replace(",", "")) for v in re.findall(r"\$\s*([\d,]*\.?\d+)\s*/\s*Unit", body)]
@@ -2263,6 +2324,7 @@ async def fetch_one(context, task, results, report):
                 if denom.get("amount") is None and nd.get("amount") is not None:
                     denom["amount"] = nd["amount"]
             denom["pname"] = task["pname"]        # e.g. which Growtopia lock to price
+            denom["match"] = task.get("match")    # secondary-market title rules
             result = await fn(page, url, denom)   # (value, currency), NA, or None
             # Sold-out guard: if no confident price came back, check whether the
             # page says the item is unavailable -> record N/A instead of nothing
@@ -2476,6 +2538,7 @@ def build_tasks(data, only_categories, limit, only_comps=None, skip_comps=None,
                     continue
                 tasks.append({"sheet": cat, "pname": product["name"], "comp": comp,
                               "url": u, "note": note,
+                              "match": info.get("match") if isinstance(info, dict) else None,
                               "region": product.get("region") if is_custom else None})
             if is_custom:
                 continue   # no name-search fallback for custom products in normal runs
