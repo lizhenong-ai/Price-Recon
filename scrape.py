@@ -1594,6 +1594,19 @@ async def adapter_igv(page, url, denom):
     return await generic_extract(page, url, denom)
 
 
+
+async def adapter_z2u(page, url, denom):
+    # Item page: the listing's own unit price reads "1 = USD $9.9". The lowest
+    # price elsewhere on the page can belong to a related listing, so don't scan.
+    body = await page.inner_text("body")
+    m = re.search(r"\b1\s*=\s*USD\s*\$\s*([\d,]*\.?\d+)", body)
+    if not m:
+        return await generic_extract(page, url, denom)
+    price = float(m.group(1).replace(",", ""))
+    target = lock_target(denom.get("pname"))
+    n = lock_count(await page.title(), target) if target else None
+    return (price / (n or 1), "USD")
+
 # domain -> adapter. Unlisted domains use generic_extract.
 ADAPTERS = {
     "codashop.com": adapter_codashop,
@@ -1610,6 +1623,7 @@ ADAPTERS = {
     "playerauctions.com": adapter_playerauctions,
     "eldorado.gg": adapter_eldorado,
     "igv.com": adapter_igv,
+    "z2u.com": adapter_z2u,
 }
 
 
