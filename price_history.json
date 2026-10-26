@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T07:06:40.203698+00:00",
+  "updated": "2026-10-26T08:29:13.679525+00:00",
   "history": {
     "2026-06-17": {
       "PlayStation": {
@@ -517097,14 +517097,20 @@
       },
       "Growtopia": {
         "Diamond Locks": {
-          "G2G": 0.05,
+          "G2G": 0.0521,
           "G2A": "N/A",
-          "Z2U": 0.18
+          "Z2U": 0.18,
+          "PlayerAuctions": 0.1,
+          "Eldorado": 0.0307,
+          "iGVault": 0.08
         },
         "Blue Gem Locks": {
           "G2G": 4.92,
           "G2A": "N/A",
-          "Z2U": 9.9
+          "Z2U": 0.9,
+          "iGVault": 8.8,
+          "Eldorado": 1.8,
+          "PlayerAuctions": 5.03
         }
       }
     }
