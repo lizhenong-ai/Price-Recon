@@ -1024,10 +1024,13 @@ def g2g_api_url(catalog_url, seo_override=None):
         params["filter_attr"] = q["fa"][0]
     if q.get("region_id"):
         params["region_id"] = q["region_id"][0]
+    if q.get("q"):                       # free-text search (e.g. Torchlight currency)
+        params["q"] = q["q"][0]
+        params["page_size"] = "100"
     return "https://sls.g2g.com/offer/search?" + _uparse.urlencode(params)
 
 
-def _g2g_try(api_url):
+def _g2g_try(api_url, rule=None):
     """Return ('ok', price) | ('empty', None) | ('notfound', None) | ('err', None)."""
     import ssl
     import urllib.error
@@ -1038,6 +1041,14 @@ def _g2g_try(api_url):
             with urllib.request.urlopen(req, timeout=20, context=ctx) as r:
                 data = json.loads(r.read().decode())
             results = (data.get("payload") or {}).get("results") or []
+            if rule:
+                # Free-text offers: keep titles matching the rule. converted_unit_price
+                # is already per unit, so bundle counts in titles must not divide it.
+                best = cheapest_matching(
+                    [(o.get("title") or "", o.get("converted_unit_price"), 1) for o in results
+                     if isinstance(o.get("converted_unit_price"), (int, float))],
+                    dict(rule, count=r"(?!)"))
+                return ("ok", best) if best else ("empty", None)
             prices = [o.get("converted_unit_price") for o in results
                       if isinstance(o.get("converted_unit_price"), (int, float))
                       and o.get("converted_unit_price") > 0]
@@ -1050,7 +1061,7 @@ def _g2g_try(api_url):
     return ("err", None)
 
 
-def fetch_g2g_price_sync(catalog_url):
+def fetch_g2g_price_sync(catalog_url, rule=None):
     """Call the G2G API, retrying with slug aliases on 404, and return
     (min_usd_price, 'USD'), NA (valid slug but no offers), or None."""
     seo = g2g_seo_from_url(catalog_url)
@@ -1059,7 +1070,7 @@ def fetch_g2g_price_sync(catalog_url):
     empty_seen = False
     for cand in _g2g_seo_candidates(seo):
         api = g2g_api_url(catalog_url, seo_override=cand)
-        status, val = _g2g_try(api)
+        status, val = _g2g_try(api, rule)
         if status == "ok":
             return (val, "USD")
         if status == "empty":
@@ -1535,7 +1546,7 @@ def cheapest_matching(offers, rule):
     offers: [(title_text, price_usd, units_per_price)] -> lowest USD per G2G unit."""
     inc = re.compile(rule.get("include") or ".", re.I)
     exc = re.compile(rule["exclude"], re.I) if rule.get("exclude") else None
-    cnt = re.compile(rule.get("count") or r"\bx\s*(\d[\d,]*)\b|\b(\d[\d,]*)\s*x\b", re.I)
+    cnt = re.compile(rule.get("count") or r"\b[x×*]\s*(\d[\d,]*)\b|(\d[\d,]*)\s*[x×*](?![a-z0-9])|\b(\d[\d,]*)\s*x\b", re.I | re.M)
     per = float(rule.get("per") or 1)
     best = None
     for title, price, units in offers:
@@ -1604,7 +1615,7 @@ async def adapter_eldorado(page, url, denom):
             elif line == "From" and k + 1 < len(lines) and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]):
                 offers.append((buf[-1] if buf else "", float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
                 buf = []
-            elif not line.startswith("$"):
+            elif not line.startswith("$") and not re.match(r"^\d+\s*(min|h|hours?|days?)$", line, re.I):
                 buf.append(line)
         best = cheapest_matching(offers, rule)
         return (best, "USD") if best else None
@@ -1660,10 +1671,22 @@ async def adapter_z2u(page, url, denom):
     # Item page: the listing's own unit price reads "1 = USD $9.9". The lowest
     # price elsewhere on the page can belong to a related listing, so don't scan.
     body = await page.inner_text("body")
-    m = re.search(r"\b1\s*=\s*USD\s*\$\s*([\d,]*\.?\d+)", body)
-    if not m:
-        return await generic_extract(page, url, denom)
-    price = float(m.group(1).replace(",", ""))
+    rule = denom.get("match")
+    if rule and "Product Contain" in body:
+        # Currency listing: blocks of "US - Season Server", "1 Offers", "from", "$0.0012".
+        lines = [l.strip() for l in body.split("\n") if l.strip()]
+        offers = []
+        for k in range(2, len(lines) - 1):
+            if lines[k] == "from" and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]) and re.search(r"\bOffers?$", lines[k - 1]):
+                offers.append((lines[k - 2], float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
+        best = cheapest_matching(offers, dict(rule, count=r"(?!)"))
+        return (best, "USD") if best else NA
+    vals = [float(v.replace(",", "")) for pair in
+            re.findall(r"\b1\s*=\s*USD\s*\$\s*([\d,]*\.?\d+)|Offers\s*From\s*\$\s*([\d,]*\.?\d+)", body)
+            for v in pair if v]
+    if not vals:
+        return None   # no listing price on the page; scanning other numbers guesses wrong
+    price = min(vals)
     target = lock_target(denom.get("pname"))
     n = lock_count(await page.title(), target) if target else None
     return (price / (n or 1), "USD")
@@ -2264,7 +2287,7 @@ async def fetch_one(context, task, results, report):
         try:
             loop = asyncio.get_event_loop()
             if host.endswith("g2g.com"):
-                pc = await loop.run_in_executor(None, fetch_g2g_price_sync, url)
+                pc = await loop.run_in_executor(None, fetch_g2g_price_sync, url, task.get("match"))
             else:
                 pc = await loop.run_in_executor(None, fetch_og_price_sync, url, task["pname"])
         except Exception:

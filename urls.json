@@ -13702,6 +13702,337 @@
           }
         }
       ]
+    },
+    "Diablo 4": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Superior Lair Key (Boss Materials)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-item-buy/offer/group?fa=33821c26%3A0a926d8a%7C59dd7f4c%3A341d00fd%7C9870fe77%3A018521e7&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-items/i/132-2-0?searchQuery=Superior%20Lair%20Key&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "superior\\s*lair",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            }
+          }
+        },
+        {
+          "name": "Greater Lair Key (Boss Materials)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-item-buy/offer/group?fa=33821c26%3A0a926d8a%7C59dd7f4c%3A2993dd2b%7C9870fe77%3A018521e7&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-items/i/132-2-0?searchQuery=Greater%20Lair%20Key&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "greater\\s*lair",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            }
+          }
+        },
+        {
+          "name": "Lair Key (Boss Materials)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-item-buy/offer/group?fa=33821c26%3A0a926d8a%7C59dd7f4c%3Ab56c6554%7C9870fe77%3A018521e7&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-items/i/132-2-0?searchQuery=Lair%20Key&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "lair\\s*keys?",
+                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            }
+          }
+        },
+        {
+          "name": "Betrayer's Husk (Boss Materials)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-item-buy/offer/group?fa=33821c26%3A0a926d8a%7C59dd7f4c%3A985db8c3%7C9870fe77%3A018521e7&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-items/i/132-2-0?searchQuery=Betrayer%27s%20Husk&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "betrayer",
+                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            }
+          }
+        },
+        {
+          "name": "Crux of the False Prophet (Boss Materials)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-item-buy/offer/group?fa=33821c26%3A0a926d8a%7C59dd7f4c%3A80ef3f91%7C9870fe77%3A018521e7&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-items/i/132-2-0?searchQuery=Crux%20of%20the%20False%20Prophet&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "crux",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Arc Raiders": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Bobcat IV (Weapons)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/arc-raiders-items/offer/group?fa=5f880845%3A0a55535e%7Cbe4f4323%3A1676a197%7Clgc_35181_platform%3Algc_35181_platform_54347&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/arc-raiders-items/i/319?searchQuery=Bobcat%20IV&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "bobcat\\s*(iv|4)\\b",
+                "exclude": "tempest|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/product-867766/ARC-Raiders-Bobcat-IV.html",
+              "note": ""
+            }
+          }
+        },
+        {
+          "name": "Tempest IV (Weapons)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/arc-raiders-items/offer/group?fa=5f880845%3A0a55535e%7Cbe4f4323%3A2e4b5cfc%7Clgc_35181_platform%3Algc_35181_platform_54347&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/arc-raiders-items/i/319?searchQuery=Tempest%20IV&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "tempest\\s*(iv|4)\\b",
+                "exclude": "bobcat|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/product-861161/ARC-Raiders-Tempest-IV.html",
+              "note": ""
+            }
+          }
+        },
+        {
+          "name": "Herbal Bandage (Quick Use)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/arc-raiders-items/offer/group?fa=5f880845%3Ae9a279b1%7C78e50c30%3Ab5aad33c%7Clgc_35181_platform%3Algc_35181_platform_54347&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/arc-raiders-items/i/319?searchQuery=Herbal%20Bandage&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "herbal\\s*bandage",
+                "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/product-947109/ARC-Raiders-Herbal-Bandage.html",
+              "note": ""
+            }
+          }
+        },
+        {
+          "name": "Snap Hook (Quick Use)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/arc-raiders-items/offer/group?fa=5f880845%3Ae9a279b1%7C78e50c30%3A63baa091%7Clgc_35181_platform%3Algc_35181_platform_54347&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/arc-raiders-items/i/319?searchQuery=Snap%20Hook&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "snap\\s*hook",
+                "exclude": "blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/product-861297/ARC-Raiders-Snap-Hook.html",
+              "note": ""
+            }
+          }
+        },
+        {
+          "name": "Looting Mk.3 (Survivor) (Augments)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/arc-raiders-items/offer/group?fa=5f880845%3A6bd5bed7%7Ca28389c5%3A6806f130%7Clgc_35181_platform%3Algc_35181_platform_54347&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/arc-raiders-items/i/319?searchQuery=Looting%20Mk.3&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "looting\\s*mk\\.?\\s*3[\\s\\S]*survivor|survivor[\\s\\S]*looting\\s*mk\\.?\\s*3",
+                "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/product-871955/ARC-Raiders-Looting-Mk-3-Survivor.html",
+              "note": ""
+            }
+          }
+        }
+      ]
+    },
+    "Path of Exile 2": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Soul Core of Jiquani (Soul Cores)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-item/offer/group?fa=1461aeea%3A3ff46263%7Cd8bb6ca5%3A713deda8%7Clgc_27013_platform%3Algc_27013_platform_62230&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Soul%20Core%20of%20Jiquani&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(soul\\s*core\\s*of\\s*jiquani))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
+            }
+          }
+        },
+        {
+          "name": "Neural Catalyst (Catalysts)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-item/offer/group?fa=4d521f17%3A65e8bd8b%7Cd8bb6ca5%3Ade8f5677%7Clgc_27013_platform%3Algc_27013_platform_62230&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Neural%20Catalyst&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(neural\\s*catalyst))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
+            }
+          }
+        },
+        {
+          "name": "Omen of Amelioration (Omens)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-item/offer/group?fa=c4fb3a0b%3A03413272%7Cd8bb6ca5%3Ab4b6de2e%7Clgc_27013_platform%3Algc_27013_platform_62230&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Omen%20of%20Amelioration&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(omen\\s*of\\s*amelioration))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
+            }
+          }
+        },
+        {
+          "name": "Omen of Resurgence (Omens)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-item/offer/group?fa=c4fb3a0b%3Ac3964921%7Cd8bb6ca5%3Ab4b6de2e%7Clgc_27013_platform%3Algc_27013_platform_62230&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Omen%20of%20Resurgence&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(omen\\s*of\\s*resurgence))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
+            }
+          }
+        },
+        {
+          "name": "Farrul's Rune of the Chase (Runes)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-item/offer/group?fa=09ad2117%3Ac94d4215%7Cd8bb6ca5%3Aa3563778%7Clgc_27013_platform%3Algc_27013_platform_62230&sort=lowest_price"
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Farrul%27s%20Rune%20of%20the%20Chase&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(farrul'?s?\\s*rune\\s*of\\s*the\\s*chase))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Torchlight: Infinite": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Flame Elementium (S14 Tartarus Season Standard)",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/torchlight-infinite-items/offer/group?q=Flame+Elementium&sort=lowest_price",
+              "match": {
+                "include": "(?=[\\s\\S]*flame\\s*elementium)(?=[\\s\\S]*(s\\s*14|tartarus))"
+              }
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/torchlight-infinite-flame-elementium/g/225?te_v0=America%20Season",
+              "note": ""
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/torchlight-infinite/Gold-1-18862",
+              "note": "",
+              "match": {
+                "include": "season"
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }
