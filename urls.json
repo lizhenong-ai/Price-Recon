@@ -13544,6 +13544,14 @@
                 "include": "dragon'?s?\\s*breath\\s*seed",
                 "exclude": "\\+|bundle|\\band\\b|&"
               }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/grow-a-garden-2-items/?SortField=cheapest-price&keyword=dragon-s-breath-seed&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "dragon'?s?\\s*breath",
+                "exclude": "\\+|bundle|\\band\\b|&"
+              }
             }
           }
         },
@@ -13563,6 +13571,14 @@
             },
             "iGVault": {
               "url": "https://www.igv.com/grow-a-garden-2/items",
+              "note": "",
+              "match": {
+                "include": "super\\s*watering\\s*can",
+                "exclude": "cider|syrup|\\+|bundle|\\band\\b|&"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/grow-a-garden-2-items/?SortField=cheapest-price&keyword=super-watering-can&sPid=0&PageIndex=1",
               "note": "",
               "match": {
                 "include": "super\\s*watering\\s*can",
@@ -13592,6 +13608,14 @@
                 "include": "star\\s*fruit\\s*seed",
                 "exclude": "\\+|bundle|\\band\\b|&"
               }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/grow-a-garden-2-items/?SortField=cheapest-price&keyword=star-fruit-seed&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "star\\s*fruit",
+                "exclude": "\\+|bundle|\\band\\b|&"
+              }
             }
           }
         },
@@ -13603,6 +13627,16 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/blox-fruits-shop/i/202-2-0?searchQuery=Simulation%20Data&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "sim(ulation)?\\s*data",
+                "exclude": "\\+|bundle|\\band\\b|&",
+                "count": "(\\d[\\d,]*)\\s*(k)?\\s*(?:sim|simulation)",
+                "per": 10000
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/blox-fruits-items/?SortField=cheapest-price&keyword=simulation-data&sPid=0&PageIndex=1",
               "note": "",
               "match": {
                 "include": "sim(ulation)?\\s*data",
@@ -13630,6 +13664,14 @@
             "Z2U": {
               "url": "https://www.z2u.com/product-8147/Blox-Fruits-Portal.html",
               "note": ""
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/blox-fruits-items/?SortField=cheapest-price&keyword=portal&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "portal[\\s\\S]*\\bperm|\\bperm[\\s\\S]*portal",
+                "exclude": "non[\\s-]*perm|physical|\\+|bundle|\\band\\b|&"
+              }
             }
           }
         },
@@ -13650,6 +13692,14 @@
             "Z2U": {
               "url": "https://www.z2u.com/product-248543/RBL-Blox-Fruits-Dragon.html",
               "note": ""
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/blox-fruits-items/?SortField=cheapest-price&keyword=dragon&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "dragon[\\s\\S]*\\bperm|\\bperm[\\s\\S]*dragon",
+                "exclude": "non[\\s-]*perm|physical|\\+|bundle|\\band\\b|&"
+              }
             }
           }
         },
@@ -13661,6 +13711,14 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/anime-expeditions-shop/i/440?searchQuery=Premium%20Pass&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "premium\\s*(battle\\s*)?pass",
+                "exclude": "vip|shiny|villain|\\+|bundle|\\band\\b|&"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/anime-expeditions-items/?SortField=cheapest-price&keyword=premium-pass&sPid=0&PageIndex=1",
               "note": "",
               "match": {
                 "include": "premium\\s*(battle\\s*)?pass",
@@ -13682,6 +13740,14 @@
                 "include": "shiny\\s*hunter",
                 "exclude": "vip|premium|\\+|bundle|\\band\\b|&"
               }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/anime-expeditions-items/?SortField=cheapest-price&keyword=shiny-hunter&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "shiny\\s*hunter",
+                "exclude": "vip|premium|\\+|bundle|\\band\\b|&"
+              }
             }
           }
         },
@@ -13693,6 +13759,14 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/anime-expeditions-shop/i/440?searchQuery=VIP&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "\\bvip\\b",
+                "exclude": "premium|shiny|villain|display|carry|boost|\\+|bundle|\\band\\b|&"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/anime-expeditions-items/?SortField=cheapest-price&keyword=vip&sPid=0&PageIndex=1",
               "note": "",
               "match": {
                 "include": "\\bvip\\b",
@@ -13725,6 +13799,22 @@
                 "include": "superior\\s*lair",
                 "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
               }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/diablo-4/items",
+              "note": "",
+              "match": {
+                "include": "superior\\s*lair",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/diablo-4-items/?SortField=cheapest-price&keyword=superior-lair-key&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "superior\\s*lair",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
             }
           }
         },
@@ -13736,6 +13826,22 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/diablo-4-items/i/132-2-0?searchQuery=Greater%20Lair%20Key&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "greater\\s*lair",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/diablo-4/items",
+              "note": "",
+              "match": {
+                "include": "greater\\s*lair",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/diablo-4-items/?SortField=cheapest-price&keyword=greater-lair-key&sPid=0&PageIndex=1",
               "note": "",
               "match": {
                 "include": "greater\\s*lair",
@@ -13757,6 +13863,22 @@
                 "include": "lair\\s*keys?",
                 "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
               }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/diablo-4/items",
+              "note": "",
+              "match": {
+                "include": "lair\\s*keys?",
+                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/diablo-4-items/?SortField=cheapest-price&keyword=lair-key&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "lair\\s*keys?",
+                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
             }
           }
         },
@@ -13773,6 +13895,22 @@
                 "include": "betrayer",
                 "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
               }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/diablo-4/items",
+              "note": "",
+              "match": {
+                "include": "betrayer",
+                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/diablo-4-items/?SortField=cheapest-price&keyword=betrayer-s-husk&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "betrayer",
+                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
             }
           }
         },
@@ -13784,6 +13922,22 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/diablo-4-items/i/132-2-0?searchQuery=Crux%20of%20the%20False%20Prophet&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "crux",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/diablo-4/items",
+              "note": "",
+              "match": {
+                "include": "crux",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/diablo-4-items/?SortField=cheapest-price&keyword=crux-of-the-false-prophet&sPid=0&PageIndex=1",
               "note": "",
               "match": {
                 "include": "crux",
@@ -13821,6 +13975,14 @@
             "Z2U": {
               "url": "https://www.z2u.com/product-867766/ARC-Raiders-Bobcat-IV.html",
               "note": ""
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=bobcat-iv&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "bobcat\\s*(iv|4)\\b",
+                "exclude": "tempest|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+              }
             }
           }
         },
@@ -13842,6 +14004,14 @@
             "Z2U": {
               "url": "https://www.z2u.com/product-861161/ARC-Raiders-Tempest-IV.html",
               "note": ""
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=tempest-iv&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "tempest\\s*(iv|4)\\b",
+                "exclude": "bobcat|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+              }
             }
           }
         },
@@ -13863,6 +14033,14 @@
             "Z2U": {
               "url": "https://www.z2u.com/product-947109/ARC-Raiders-Herbal-Bandage.html",
               "note": ""
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=herbal-bandage&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "herbal\\s*bandage",
+                "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+              }
             }
           }
         },
@@ -13884,6 +14062,14 @@
             "Z2U": {
               "url": "https://www.z2u.com/product-861297/ARC-Raiders-Snap-Hook.html",
               "note": ""
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=snap-hook&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "snap\\s*hook",
+                "exclude": "blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+              }
             }
           }
         },
@@ -13905,6 +14091,14 @@
             "Z2U": {
               "url": "https://www.z2u.com/product-871955/ARC-Raiders-Looting-Mk-3-Survivor.html",
               "note": ""
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=looting-mk-3&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "looting\\s*mk\\.?\\s*3[\\s\\S]*survivor|survivor[\\s\\S]*looting\\s*mk\\.?\\s*3",
+                "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+              }
             }
           }
         }
@@ -13932,6 +14126,14 @@
                 "include": "(?=[\\s\\S]*(soul\\s*core\\s*of\\s*jiquani))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
                 "exclude": "hardcore|\\+"
               }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/path-of-exile-2-items/?SortField=cheapest-price&keyword=soul-core-of-jiquani&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(soul\\s*core\\s*of\\s*jiquani))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
             }
           }
         },
@@ -13943,6 +14145,14 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Neural%20Catalyst&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(neural\\s*catalyst))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/path-of-exile-2-items/?SortField=cheapest-price&keyword=neural-catalyst&sPid=0&PageIndex=1",
               "note": "",
               "match": {
                 "include": "(?=[\\s\\S]*(neural\\s*catalyst))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
@@ -13964,6 +14174,14 @@
                 "include": "(?=[\\s\\S]*(omen\\s*of\\s*amelioration))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
                 "exclude": "hardcore|\\+"
               }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/path-of-exile-2-items/?SortField=cheapest-price&keyword=omen-of-amelioration&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(omen\\s*of\\s*amelioration))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
             }
           }
         },
@@ -13980,6 +14198,14 @@
                 "include": "(?=[\\s\\S]*(omen\\s*of\\s*resurgence))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
                 "exclude": "hardcore|\\+"
               }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/path-of-exile-2-items/?SortField=cheapest-price&keyword=omen-of-resurgence&sPid=0&PageIndex=1",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(omen\\s*of\\s*resurgence))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
             }
           }
         },
@@ -13991,6 +14217,14 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Farrul%27s%20Rune%20of%20the%20Chase&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "(?=[\\s\\S]*(farrul'?s?\\s*rune\\s*of\\s*the\\s*chase))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
+                "exclude": "hardcore|\\+"
+              }
+            },
+            "PlayerAuctions": {
+              "url": "https://www.playerauctions.com/path-of-exile-2-items/?SortField=cheapest-price&keyword=farrul-s-rune-of-the-chase&sPid=0&PageIndex=1",
               "note": "",
               "match": {
                 "include": "(?=[\\s\\S]*(farrul'?s?\\s*rune\\s*of\\s*the\\s*chase))(?=[\\s\\S]*runes\\s*of\\s*aldur)",

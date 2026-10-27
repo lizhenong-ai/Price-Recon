@@ -1546,7 +1546,7 @@ def cheapest_matching(offers, rule):
     offers: [(title_text, price_usd, units_per_price)] -> lowest USD per G2G unit."""
     inc = re.compile(rule.get("include") or ".", re.I)
     exc = re.compile(rule["exclude"], re.I) if rule.get("exclude") else None
-    cnt = re.compile(rule.get("count") or r"\b[x×*]\s*(\d[\d,]*)\b|(\d[\d,]*)\s*[x×*](?![a-z0-9])|\b(\d[\d,]*)\s*x\b", re.I | re.M)
+    cnt = re.compile(rule.get("count") or r"(?:\bx|[×*])\s*(\d[\d,]*)\b|(\d[\d,]*)\s*[x×*](?![a-z0-9])|\b(\d[\d,]*)\s*x\b", re.I | re.M)
     per = float(rule.get("per") or 1)
     best = None
     for title, price, units in offers:
@@ -1652,9 +1652,9 @@ async def adapter_igv(page, url, denom):
         offers = []
         for k in range(1, len(lines) - 1):
             if lines[k] == "From" and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]):
-                # card: title, "Item Type: ...", "From", "$12.00"
-                title = next((lines[j] for j in range(k - 1, max(k - 4, -1), -1)
-                              if not re.match(r"^(Item Type|Server/Platform|Category)\b|^\d+ Offers?$", lines[j])), "")
+                # card: title, "Item Type:" / "Server:" / "Category:" / "N Offers", "From", "$12.00"
+                title = next((lines[j] for j in range(k - 1, max(k - 6, -1), -1)
+                              if not re.match(r"^(Item Type|Server|Category)\b|^\d+ Offers?$", lines[j])), "")
                 offers.append((title, float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
         best = cheapest_matching(offers, rule)
         return (best, "USD") if best else NA
