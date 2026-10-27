@@ -14121,10 +14121,10 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Soul%20Core%20of%20Jiquani&offerSortingCriterion=Cheapest",
-              "note": "",
+              "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
-                "include": "(?=[\\s\\S]*(soul\\s*core\\s*of\\s*jiquani))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "include": "(?m)^Standard$[\\s\\S]*soul\\s*core\\s*of\\s*jiquani",
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
               }
             },
             "PlayerAuctions": {
@@ -14145,10 +14145,10 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Neural%20Catalyst&offerSortingCriterion=Cheapest",
-              "note": "",
+              "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
-                "include": "(?=[\\s\\S]*(neural\\s*catalyst))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "include": "(?m)^Standard$[\\s\\S]*neural\\s*catalyst",
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
               }
             },
             "PlayerAuctions": {
@@ -14169,10 +14169,10 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Omen%20of%20Amelioration&offerSortingCriterion=Cheapest",
-              "note": "",
+              "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
-                "include": "(?=[\\s\\S]*(omen\\s*of\\s*amelioration))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "include": "(?m)^Standard$[\\s\\S]*omen\\s*of\\s*amelioration",
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
               }
             },
             "PlayerAuctions": {
@@ -14193,10 +14193,10 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Omen%20of%20Resurgence&offerSortingCriterion=Cheapest",
-              "note": "",
+              "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
-                "include": "(?=[\\s\\S]*(omen\\s*of\\s*resurgence))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "include": "(?m)^Standard$[\\s\\S]*omen\\s*of\\s*resurgence",
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
               }
             },
             "PlayerAuctions": {
@@ -14217,10 +14217,10 @@
             },
             "Eldorado": {
               "url": "https://www.eldorado.gg/poe-2-items/i/220?searchQuery=Farrul%27s%20Rune%20of%20the%20Chase&offerSortingCriterion=Cheapest",
-              "note": "",
+              "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
-                "include": "(?=[\\s\\S]*(farrul'?s?\\s*rune\\s*of\\s*the\\s*chase))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "include": "(?m)^Standard$[\\s\\S]*farrul'?s?\\s*rune\\s*of\\s*the\\s*chase",
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
               }
             },
             "PlayerAuctions": {

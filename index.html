@@ -330,7 +330,13 @@ let remarks = {};       // { sheet: "note" }  — one general note per category
 function loadRemarks() {
   let local = null;
   try { local = JSON.parse(localStorage.getItem('brand_remarks_v1') || 'null'); } catch (e) { local = null; }
-  if (local) { remarks = local; }
+  if (local) {
+    remarks = local;
+    // Pick up shared remarks for categories this browser has never noted.
+    for (const [k, v] of Object.entries((SHARED_STATE && SHARED_STATE.remarks) || {})) {
+      if (!(k in remarks)) remarks[k] = v;
+    }
+  }
   else if (SHARED_STATE && SHARED_STATE.remarks) { remarks = JSON.parse(JSON.stringify(SHARED_STATE.remarks)); }
   else { remarks = {}; }
 }
