@@ -1,57 +1,176 @@
 {
-  "ok": 2984,
-  "failed": 517,
-  "errors": [
-    "G2A https://www.g2a.com/roblox-card-100-usd-roblox-key-united-st :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-200-usd-amazon-united-s :: Error",
-    "G2A https://www.g2a.com/roblox-card-100-usd-roblox-key-united-st :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-200-usd-amazon-united-s :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-20-usd-itunes-key :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-20-usd-itunes-key :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-100-usd-maste :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-100-usd-maste :: Error",
-    "G2A https://www.g2a.com/roblox-card-50-usd-roblox-key-united-sta :: Error",
-    "G2A https://www.g2a.com/roblox-card-50-usd-roblox-key-united-sta :: Error",
-    "G2A https://www.g2a.com/playstation-network-gift-card-20-gbp-psn :: Error",
-    "G2A https://www.g2a.com/playstation-network-gift-card-20-gbp-psn :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-50-usd-master :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-50-usd-master :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-1000-usd-amazon-key-uni :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-1000-usd-amazon-key-uni :: Error",
-    "G2A https://www.g2a.com/roblox-card-25-usd-roblox-key-united-sta :: Error",
-    "G2A https://www.g2a.com/roblox-card-25-usd-roblox-key-united-sta :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-25-usd-master :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-25-usd-master :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-15-usd-itunes-key :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-15-usd-itunes-key :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-500-usd-amazon-united-s :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-500-usd-amazon-united-s :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-15-usd-master :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-15-usd-master :: Error",
-    "G2A https://www.g2a.com/roblox-card-10-usd-roblox-key-global-i10 :: Error",
-    "G2A https://www.g2a.com/roblox-card-10-usd-roblox-key-global-i10 :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-10-usd-master :: Error",
-    "G2A https://www.g2a.com/prepaid-virtual-mastercard-10-usd-master :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-200-usd-amazon-united-s :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-200-usd-amazon-united-s :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-10-usd-itunes-key :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-10-usd-itunes-key :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-150-usd-amazon-united-s :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-150-usd-amazon-united-s :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-75-usd-amazon-united-st :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-75-usd-amazon-united-st :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-north-america-5-u :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-north-america-5-u :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-35-usd-amazon-united-st :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-35-usd-amazon-united-st :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-30-usd-amazon-united-st :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-30-usd-amazon-united-st :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-50000-jpy-itunes- :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-50000-jpy-itunes- :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-25-usd-amazon-key-unite :: Error",
-    "G2A https://www.g2a.com/amazon-gift-card-25-usd-amazon-key-unite :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-30000-jpy-itunes- :: Error",
-    "G2A https://www.g2a.com/apple-itunes-gift-card-30000-jpy-itunes- :: Error"
-  ],
-  "elapsed_sec": 5283.1
+  "ok": 19,
+  "failed": 6,
+  "errors": [],
+  "elapsed_sec": 45.8,
+  "diagnostics": [
+    {
+      "site": "PlayerAuctions",
+      "product": "Herbal Bandage (Quick Use)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=herbal-bandage&sPid=0&PageIndex=1",
+      "title": "Just a moment...",
+      "price_rows": 0,
+      "row_titles": [],
+      "text": ""
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Herbal Bandage (Quick Use)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=herbal-bandage&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 5,
+      "row_titles": [
+        "20* survivor + 20* Medium Shield + 100* wires +100* herbal bandages - [PC/PS/XBOX] - Real stock + Fast delivery |  | Crafting Materials | Lvl 2 | Happy_Shark | ",
+        "100* herbal bandage + 100* processors + 100* sensors - [PC/PS/XBOX] - Real stock + Fast delivery |  | Crafting Materials | Lvl 2 | Happy_Shark | Total Orders: 1",
+        "125x Herbal Bandage (25x stacks) |  | Others | Lvl 1 | daalmaguer | Total Orders: 799 | Member since: 2026 | 5.0 | (692) | 14 Hours 4 Minutes | + | - | $0.040 /",
+        "[Uncommon]Herbal Bandage material package:[100x Great Mullein]+[100x Durable Cloth][These mats make 100][Protected extract+Real stock+ Fast delivery] |  | Craft",
+        "120x Herbal Bandage - Real stock - In Stock & Fast Delivery -If you need any custom items, please send me a message. |  | Kits | Lvl 1 | hiborhjy | Total Orders"
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15644 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 374 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE *60 HERBAL BANDAGE Others Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 1 Hours + - $1 = 999900.000 $5.00 BUY NOW 20x Survivor + 20x Medium Shield + 100x Herbal Bandage (Swap any Mk.3 augment.) Others Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 2 Hours + - $1 = 999900.000 $15.00 BUY NOW BUNDLE - 15x SURVIVOR + 15x MEDIUM SHIELD + 100x HERBAL BANDAGE Others Lvl 1 Hoba_gaming Total Orders: 79 Member since: 2026 4."
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Looting Mk.3 (Survivor) (Augments)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=looting-mk-3&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 20,
+      "row_titles": [
+        "Looting Mk 3 Safekeeper x20 ARC Raiders Steam Xbox PS |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.",
+        "Looting Mk 3 Survivor x20 ARC Raiders Steam Xbox PS |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.35",
+        "Looting Mk 3 Cautious x20 ARC Raiders Steam Xbox PS |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.35",
+        "Looting Mk 3 Safekeeper x20 ARC Raiders Steam |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.350 / 1 ",
+        "Looting Mk 3 Survivor x20 ARC Raiders Steam |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.350 / 1 | ",
+        "Looting Mk 3 Cautious x20 ARC Raiders Steam |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.350 / 1 | ",
+        "x10 Looting Mk 3 Survivor |  | Others | Lvl 1 | Am0Oon | Total Orders: 102 | Member since: 2025 | 4.9 | (46) | 2 Hours | + | - | $0.799 / 1 | $7.99 | BUY NOW",
+        "Looting Mk 3 Survivor Blueprint |  | Looting Mk 3 Survivor Blueprint | Lvl 5 | applegold | Total Orders: 224,357 | Member since: 2014 | 4.9 | (12,340) | 1 Hour "
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15645 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 20 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE Looting Mk 3 Safekeeper x20 ARC Raiders Steam Xbox PS Kits Lvl 1 kbaliang Total Orders: 537 Member since: 2023 5.0 (82) 1 Hours + - $0.350 / 1 $7.00 BUY NOW Looting Mk 3 Survivor x20 ARC Raiders Steam Xbox PS Kits Lvl 1 kbaliang Total Orders: 537 Member since: 2023 5.0 (82) 1 Hours + - $0.350 / 1 $7.00 BUY NOW Looting Mk 3 Cautious x20 ARC Raiders Steam Xbox PS Kits Lvl 1 kbaliang Total Orders: 537 Member since: 2023 5.0 (82) 1 Hours + - $0.3"
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Tempest IV (Weapons)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=tempest-iv&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 22,
+      "row_titles": [
+        "Tempest IV | No Attachments | Full durability |  | Tempest | AWSOMEJAM | Total Orders: 0 | Member since: 2026 | 0.0 | (0) | 1 Hours | + | - | $0.990 / 1 | $9.90",
+        "20x Tempest IV with no attachments |  | Tempest | New Seller | 1jose | Total Orders: 2 | Member since: 2026 | 0.0 | (0) | 1 Hour | + | - | $1.200 / 1 | $23.99 |",
+        "20x Tempest IV with no attachments |  | Others | Lvl 3 | woniuge | Total Orders: 749 | Member since: 2026 | 4.9 | (369) | 1 Hours | + | - | $1.250 / 1 | $25.00 ",
+        "10x Tempest IV |  | Tempest | Lvl 1 | Am0Oon | Total Orders: 102 | Member since: 2025 | 4.9 | (46) | 2 Hours | + | - | $1.299 / 1 | $12.99 | BUY NOW",
+        "Tempest IV x5 - NO Attachments ARC Raiders Steam Xbox PS |  | Tempest | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | -",
+        "Tempest IV x5 NO Attachments ARC Raiders Steam |  | Tempest | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $1.400 ",
+        "x10 Tempest IV 100% Durability+extended mag 3+Horizontal Grip+silencer3 or compensator 3+Protected extract-Real stock + Fast delivery |  | Tempest | buildbbb0 |",
+        "20x Tempest IV with all blue attachments |  | Others | Lvl 3 | woniuge | Total Orders: 749 | Member since: 2026 | 4.9 | (369) | 1 Hours | + | - | $1.600 / 1 | $"
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15644 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 644 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE *10 Tempest IV Weapons Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 2 Hours + - $1 = 999900.000 $38.00 BUY NOW x10 Tempest IV 100% Durability -(Compensator III+Horizontal Grip+Extended Medium Mag 3)- Protected extraction+Real stock + Fast delivery.. Tempest Davka888 Total Orders: 20 Member since: 2025 5.0 (15) 1 Hour + - $1 = 999900.000 $25.99 BUY NOW x20 Tempest IV 100% Durability -(Compensator III+Horizontal Grip+Extended Me"
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Looting Mk.3 (Survivor) (Augments)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=looting-mk-3&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 20,
+      "row_titles": [
+        "Looting Mk 3 Safekeeper x20 ARC Raiders Steam Xbox PS |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.",
+        "Looting Mk 3 Survivor x20 ARC Raiders Steam Xbox PS |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.35",
+        "Looting Mk 3 Cautious x20 ARC Raiders Steam Xbox PS |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.35",
+        "Looting Mk 3 Safekeeper x20 ARC Raiders Steam |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.350 / 1 ",
+        "Looting Mk 3 Survivor x20 ARC Raiders Steam |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.350 / 1 | ",
+        "Looting Mk 3 Cautious x20 ARC Raiders Steam |  | Kits | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $0.350 / 1 | ",
+        "x10 Looting Mk 3 Survivor |  | Others | Lvl 1 | Am0Oon | Total Orders: 102 | Member since: 2025 | 4.9 | (46) | 2 Hours | + | - | $0.799 / 1 | $7.99 | BUY NOW",
+        "Looting Mk 3 Survivor Blueprint |  | Looting Mk 3 Survivor Blueprint | Lvl 5 | applegold | Total Orders: 224,357 | Member since: 2014 | 4.9 | (12,340) | 1 Hour "
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15645 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 20 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE Looting Mk 3 Safekeeper x20 ARC Raiders Steam Xbox PS Kits Lvl 1 kbaliang Total Orders: 537 Member since: 2023 5.0 (82) 1 Hours + - $0.350 / 1 $7.00 BUY NOW Looting Mk 3 Survivor x20 ARC Raiders Steam Xbox PS Kits Lvl 1 kbaliang Total Orders: 537 Member since: 2023 5.0 (82) 1 Hours + - $0.350 / 1 $7.00 BUY NOW Looting Mk 3 Cautious x20 ARC Raiders Steam Xbox PS Kits Lvl 1 kbaliang Total Orders: 537 Member since: 2023 5.0 (82) 1 Hours + - $0.3"
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Tempest IV (Weapons)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=tempest-iv&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 22,
+      "row_titles": [
+        "Tempest IV | No Attachments | Full durability |  | Tempest | AWSOMEJAM | Total Orders: 0 | Member since: 2026 | 0.0 | (0) | 1 Hours | + | - | $0.990 / 1 | $9.90",
+        "20x Tempest IV with no attachments |  | Tempest | New Seller | 1jose | Total Orders: 2 | Member since: 2026 | 0.0 | (0) | 1 Hour | + | - | $1.200 / 1 | $23.99 |",
+        "20x Tempest IV with no attachments |  | Others | Lvl 3 | woniuge | Total Orders: 749 | Member since: 2026 | 4.9 | (369) | 1 Hours | + | - | $1.250 / 1 | $25.00 ",
+        "10x Tempest IV |  | Tempest | Lvl 1 | Am0Oon | Total Orders: 102 | Member since: 2025 | 4.9 | (46) | 2 Hours | + | - | $1.299 / 1 | $12.99 | BUY NOW",
+        "Tempest IV x5 - NO Attachments ARC Raiders Steam Xbox PS |  | Tempest | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | -",
+        "Tempest IV x5 NO Attachments ARC Raiders Steam |  | Tempest | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $1.400 ",
+        "x10 Tempest IV 100% Durability+extended mag 3+Horizontal Grip+silencer3 or compensator 3+Protected extract-Real stock + Fast delivery |  | Tempest | buildbbb0 |",
+        "20x Tempest IV with all blue attachments |  | Others | Lvl 3 | woniuge | Total Orders: 749 | Member since: 2026 | 4.9 | (369) | 1 Hours | + | - | $1.600 / 1 | $"
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15645 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 644 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE *10 Tempest IV Weapons Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 2 Hours + - $1 = 999900.000 $38.00 BUY NOW x10 Tempest IV 100% Durability -(Compensator III+Horizontal Grip+Extended Medium Mag 3)- Protected extraction+Real stock + Fast delivery.. Tempest Davka888 Total Orders: 20 Member since: 2025 5.0 (15) 1 Hour + - $1 = 999900.000 $25.99 BUY NOW x20 Tempest IV 100% Durability -(Compensator III+Horizontal Grip+Extended Me"
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Bobcat IV (Weapons)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=bobcat-iv&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 18,
+      "row_titles": [
+        "Bobcat IV | No Attachments | Full durability |  | Bobcat | AWSOMEJAM | Total Orders: 0 | Member since: 2026 | 0.0 | (0) | 1 Hours | + | - | $0.990 / 1 | $9.90 |",
+        "10x Bobcat IV 100% (No Attachment) - Real stock |  | Bobcat | Lvl 1 | FanGen9403 | Total Orders: 107 | Member since: 2026 | 4.6 | (67) | 1 Hours | + | - | $1.05",
+        "20x Bobcat IV with no attachments |  | Others | Lvl 3 | woniuge | Total Orders: 749 | Member since: 2026 | 4.9 | (369) | 1 Hours | + | - | $1.250 / 1 | $25.00 |",
+        "4x Bobcat IV - no attachments |  | Bobcat | audinewworld | Total Orders: 4 | Member since: 2022 | 0.0 | (0) | 24 Hours | + | - | $1.250 / 1 | $5.00 | BUY NOW",
+        "Bobcat IV | Order Qty 1/2/ to Receive ONE Gun: No Attachments / Random Blue Attachments | Read Description |  | Bobcat | Lvl 1 | luozhongtian | Total Orders: 59",
+        "Bobcat IV x5 - NO Attachments ARC Raiders Steam Xbox PS |  | Bobcat | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - |",
+        "Bobcat IV x5 NO Attachments ARC Raiders Steam |  | Bobcat | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $1.400 / ",
+        "10x Bobcat IV | %100 Durability | Level III Attachments | Instant Delivery |  | Bobcat | Lvl 1 | sierzg | Total Orders: 309 | Member since: 2025 | 5.0 | (281) |"
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15645 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 631 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE *20 Bobcat IV Weapons Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 1 Hours + - $1 = 999900.000 $66.00 BUY NOW *2 Bobcat IV Bobcat Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 6 Hours + - $1 = 999900.000 $6.50 BUY NOW *10 Bobcat IV Weapons Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 1 Hours + - $1 = 999900.000 $33.00 BUY NOW *20 Bobcat IV Weapons Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4"
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Snap Hook (Quick Use)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=snap-hook&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 23,
+      "row_titles": [
+        "[Legendary]Snap Hook Material package:[20x Power Rod]+[20x Rope]+[10x Exodus Modules][These mats make 10][Protected extract+Real stock+ Fast delivery] |  | Craf",
+        "10x Snap Hook + 30x Zipline - Protected extraction - Real stock - Fast delivery - If you need any custom items, please send me a message. |  | Weapons | Lvl 1 |",
+        "x10 Snap Hook + 20* trailblazer - Real stock + Fast delivery |  | Weapons | Lvl 1 | Raidshop | Total Orders: 269 | Member since: 2022 | 4.9 | (209) | 1 Hours | ",
+        "10* snap hooks + 20* surge coils - [PC/PS/XBOX] - Real stock + Fast delivery |  | Crafting Materials | Lvl 2 | Happy_Shark | Total Orders: 1,508 | Member since:",
+        "x20 SNAP HOOK 100% Durability accessories-finished product - Real stock + Fast delivery+Protected extraction |  | Others | Lvl 1 | yuanqwq | Total Orders: 100 |",
+        "x20 snap hook fast delivery- Custom orders available, message me if you need |  | Weapons | Lvl 3 | LootHarbor | Total Orders: 142 | Member since: 2026 | 4.8 | ",
+        "x10 Snap hook - Fast Delivery | In Stock | Safe Trade (PC / PSN / XBOX) |  | Weapons | Lvl 1 | yuanqwq | Total Orders: 100 | Member since: 2026 | 5.0 | (23) | 1",
+        "8*Snap Hook - in stock + Fast delivery |  | Weapons | Lvl 2 | Bumblebee2026 | Total Orders: 947 | Member since: 2026 | 4.9 | (609) | 1 Hour | + | - | $0.625 / 1"
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15644 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 215 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE x20 SNAP HOOK Others Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 2 Hours + - $1 = 999900.000 $20.00 BUY NOW x40 Snap Hook Real stock + Fast delivery Others Davka888 Total Orders: 20 Member since: 2025 5.0 (15) 1 Hour + - $1 = 999900.000 $39.99 BUY NOW x20 Snap Hook Real stock + Fast delivery Others Davka888 Total Orders: 20 Member since: 2025 5.0 (15) 1 Hour + - $1 = 999900.000 $19.99 BUY NOW x10 Snap Hook Real stock + Fast d"
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Bobcat IV (Weapons)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=bobcat-iv&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 18,
+      "row_titles": [
+        "Bobcat IV | No Attachments | Full durability |  | Bobcat | AWSOMEJAM | Total Orders: 0 | Member since: 2026 | 0.0 | (0) | 1 Hours | + | - | $0.990 / 1 | $9.90 |",
+        "10x Bobcat IV 100% (No Attachment) - Real stock |  | Bobcat | Lvl 1 | FanGen9403 | Total Orders: 107 | Member since: 2026 | 4.6 | (67) | 1 Hours | + | - | $1.05",
+        "20x Bobcat IV with no attachments |  | Others | Lvl 3 | woniuge | Total Orders: 749 | Member since: 2026 | 4.9 | (369) | 1 Hours | + | - | $1.250 / 1 | $25.00 |",
+        "4x Bobcat IV - no attachments |  | Bobcat | audinewworld | Total Orders: 4 | Member since: 2022 | 0.0 | (0) | 24 Hours | + | - | $1.250 / 1 | $5.00 | BUY NOW",
+        "Bobcat IV | Order Qty 1/2/ to Receive ONE Gun: No Attachments / Random Blue Attachments | Read Description |  | Bobcat | Lvl 1 | luozhongtian | Total Orders: 59",
+        "Bobcat IV x5 - NO Attachments ARC Raiders Steam Xbox PS |  | Bobcat | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - |",
+        "Bobcat IV x5 NO Attachments ARC Raiders Steam |  | Bobcat | Lvl 1 | kbaliang | Total Orders: 537 | Member since: 2023 | 5.0 | (82) | 1 Hours | + | - | $1.400 / ",
+        "10x Bobcat IV | %100 Durability | Level III Attachments | Instant Delivery |  | Bobcat | Lvl 1 | sierzg | Total Orders: 309 | Member since: 2025 | 5.0 | (281) |"
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15644 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 631 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE *20 Bobcat IV Weapons Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 1 Hours + - $1 = 999900.000 $66.00 BUY NOW *2 Bobcat IV Bobcat Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 6 Hours + - $1 = 999900.000 $6.50 BUY NOW *10 Bobcat IV Weapons Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 1 Hours + - $1 = 999900.000 $33.00 BUY NOW *20 Bobcat IV Weapons Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4"
+    },
+    {
+      "site": "PlayerAuctions",
+      "product": "Snap Hook (Quick Use)",
+      "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=snap-hook&sPid=0&PageIndex=1",
+      "title": "Buy ARC Raiders Items & Loot for Sale | PlayerAuctions",
+      "price_rows": 23,
+      "row_titles": [
+        "[Legendary]Snap Hook Material package:[20x Power Rod]+[20x Rope]+[10x Exodus Modules][These mats make 10][Protected extract+Real stock+ Fast delivery] |  | Craf",
+        "10x Snap Hook + 30x Zipline - Protected extraction - Real stock - Fast delivery - If you need any custom items, please send me a message. |  | Weapons | Lvl 1 |",
+        "x10 Snap Hook + 20* trailblazer - Real stock + Fast delivery |  | Weapons | Lvl 1 | Raidshop | Total Orders: 269 | Member since: 2022 | 4.9 | (209) | 1 Hours | ",
+        "10* snap hooks + 20* surge coils - [PC/PS/XBOX] - Real stock + Fast delivery |  | Crafting Materials | Lvl 2 | Happy_Shark | Total Orders: 1,508 | Member since:",
+        "x20 SNAP HOOK 100% Durability accessories-finished product - Real stock + Fast delivery+Protected extraction |  | Others | Lvl 1 | yuanqwq | Total Orders: 100 |",
+        "x20 snap hook fast delivery- Custom orders available, message me if you need |  | Weapons | Lvl 3 | LootHarbor | Total Orders: 142 | Member since: 2026 | 4.8 | ",
+        "x10 Snap hook - Fast Delivery | In Stock | Safe Trade (PC / PSN / XBOX) |  | Weapons | Lvl 1 | yuanqwq | Total Orders: 100 | Member since: 2026 | 5.0 | (23) | 1",
+        "8*Snap Hook - in stock + Fast delivery |  | Weapons | Lvl 2 | Bumblebee2026 | Total Orders: 947 | Member since: 2026 | 4.9 | (609) | 1 Hour | + | - | $0.625 / 1"
+      ],
+      "text": "Skip to main content PlayerAuctions English LOG IN SIGN UP Home > ARC Raiders > Items INDEPENDENT MARKETPLACE Buy ARC Raiders Items – ARC Raiders Loot Shop Looking for high-tech weapons, armor mods, or blueprints in ARC Raiders? With the latest update adding hurricanes and stronger ARC enemies, the right gear makes all the difference. Stock up from trusted sellers at PlayerAuctions to survive raids, complete objectives, and stay competitive, ensuring your squad dominates every extraction loop. 4.9 ARC Raiders Items Feedback Rate Based on 150,007 orders 57 Coins 15644 Items 187 Accounts 249 Boosting 0 Top-ups Game Tools Guides & Tips Player Count Market Price Tracker Cheat Sheet Select Platform Steam PS Xbox Select item Blueprints Bundles Keycards Kits Materials Mods Resources Trinkets Weapons Others GO 215 Offers found Reset Weapons Blueprints Trigger Nade Blueprint Assorted Seeds Familiar Duck Anvil Blueprint Bobcat Blueprint Venator Blueprint Wolfpack Blueprint Keycards Materials Resources Mods OFFER TITLE RATING DELIVERY QUANTITY PRICE x20 SNAP HOOK Others Lvl 1 Julin7 Total Orders: 244 Member since: 2025 4.9 (187) 2 Hours + - $1 = 999900.000 $20.00 BUY NOW x40 Snap Hook Real stock + Fast delivery Others Davka888 Total Orders: 20 Member since: 2025 5.0 (15) 1 Hour + - $1 = 999900.000 $39.99 BUY NOW x20 Snap Hook Real stock + Fast delivery Others Davka888 Total Orders: 20 Member since: 2025 5.0 (15) 1 Hour + - $1 = 999900.000 $19.99 BUY NOW x10 Snap Hook Real stock + Fast d"
+    }
+  ]
 }
