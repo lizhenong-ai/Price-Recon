@@ -55,6 +55,7 @@ HISTORY_FILE = ROOT / "price_history.json"   # daily snapshots for the date pick
 HISTORY_DAYS = 180                           # keep ~6 months of daily snapshots
 REPORT_FILE = ROOT / "scrape_report.json"
 DEBUG_DIR = ROOT / "debug"
+DIAGNOSTICS = []                             # why rule-matched pages gave no price (-> scrape_report)
 
 # --- tuning knobs -----------------------------------------------------------
 CONCURRENCY = 4            # parallel pages; keep low to stay polite / unblocked
@@ -1590,6 +1591,15 @@ async def adapter_playerauctions(page, url, denom):
         if m:
             offers.append((text, float(m.group(1).replace(",", "")), int(m.group(2))))
     best = cheapest_matching(offers, rule) if rule else cheapest_per_lock(offers, target)
+    if not best:
+        # Record what the page showed so a wrong link or new layout can be spotted
+        # from scrape_report.json (PlayerAuctions can't be opened outside the scraper).
+        body = await page.inner_text("body")
+        DIAGNOSTICS.append({"site": "PlayerAuctions", "product": denom.get("pname"),
+                            "url": page.url, "title": await page.title(),
+                            "price_rows": len(offers),
+                            "row_titles": [t.strip().replace("\n", " | ")[:160] for t, _, _ in offers[:8]],
+                            "text": re.sub(r"\s+", " ", body)[:1500]})
     return (best, "USD") if best else None
 
 
@@ -2702,6 +2712,7 @@ def main():
 
     report["elapsed_sec"] = round(time.time() - t0, 1)
     report["errors"] = report["errors"][:50]
+    report["diagnostics"] = DIAGNOSTICS[:40]
     REPORT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 
     if ARGS.debug:
