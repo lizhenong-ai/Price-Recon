@@ -2494,6 +2494,10 @@ async function boot() {
   applyCatalogOverrides();
   loadUrlOverrides();
   applyUrlOverrides();
+  // Deep link: index.html#brand=<brand> opens that brand's page directly (used by the
+  // G2G sales dashboard's Price Rank links).
+  const deepBrand = new URLSearchParams(location.hash.slice(1)).get('brand');
+  if (deepBrand && RAW_DATA[deepBrand]) currentSheet = deepBrand;
   renderTabs();
   render();
   setupSidebarSearch();
@@ -2519,6 +2523,11 @@ function setupSidebarSearch() {
   clr.addEventListener('click', function () { inp.value = ''; apply(); inp.focus(); });
 }
 boot();
+// Follow later deep links too (the dashboard reuses one Price Recon tab).
+window.addEventListener('hashchange', () => {
+  const b = new URLSearchParams(location.hash.slice(1)).get('brand');
+  if (b && RAW_DATA[b] && b !== currentSheet) selectSheet(b);
+});
 // Cmd/Ctrl+Z to undo (ignore when typing in a price cell so native text undo works there)
 document.addEventListener('keydown', (e) => {
   if ((e.metaKey || e.ctrlKey) && (e.key === 'z' || e.key === 'Z')) {
