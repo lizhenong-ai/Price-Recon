@@ -13550,7 +13550,7 @@
               "note": "",
               "match": {
                 "include": "dragon'?s?\\s*breath",
-                "exclude": "\\+|bundle|\\band\\b|&"
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
             }
           }
@@ -13582,7 +13582,7 @@
               "note": "",
               "match": {
                 "include": "super\\s*watering\\s*can",
-                "exclude": "cider|syrup|\\+|bundle|\\band\\b|&"
+                "exclude": "cider|syrup|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
             }
           }
@@ -13614,7 +13614,7 @@
               "note": "",
               "match": {
                 "include": "star\\s*fruit",
-                "exclude": "\\+|bundle|\\band\\b|&"
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
             }
           }
@@ -13640,7 +13640,7 @@
               "note": "",
               "match": {
                 "include": "sim(ulation)?\\s*data",
-                "exclude": "\\+|bundle|\\band\\b|&",
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
                 "count": "(\\d[\\d,]*)\\s*(k)?\\s*(?:sim|simulation)",
                 "per": 10000
               }
@@ -13670,7 +13670,7 @@
               "note": "",
               "match": {
                 "include": "portal[\\s\\S]*\\bperm|\\bperm[\\s\\S]*portal",
-                "exclude": "non[\\s-]*perm|physical|\\+|bundle|\\band\\b|&"
+                "exclude": "non[\\s-]*perm|physical|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
             }
           }
@@ -13698,7 +13698,7 @@
               "note": "",
               "match": {
                 "include": "dragon[\\s\\S]*\\bperm|\\bperm[\\s\\S]*dragon",
-                "exclude": "non[\\s-]*perm|physical|\\+|bundle|\\band\\b|&"
+                "exclude": "non[\\s-]*perm|physical|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
             }
           }
@@ -13722,7 +13722,7 @@
               "note": "",
               "match": {
                 "include": "premium\\s*(battle\\s*)?pass",
-                "exclude": "vip|shiny|villain|\\+|bundle|\\band\\b|&"
+                "exclude": "vip|shiny|villain|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
             }
           }
@@ -13746,7 +13746,7 @@
               "note": "",
               "match": {
                 "include": "shiny\\s*hunter",
-                "exclude": "vip|premium|\\+|bundle|\\band\\b|&"
+                "exclude": "vip|premium|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
             }
           }
@@ -13770,7 +13770,7 @@
               "note": "",
               "match": {
                 "include": "\\bvip\\b",
-                "exclude": "premium|shiny|villain|display|carry|boost|\\+|bundle|\\band\\b|&"
+                "exclude": "premium|shiny|villain|display|carry|boost|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
             }
           }
@@ -13813,7 +13813,7 @@
               "note": "",
               "match": {
                 "include": "superior\\s*lair",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
               }
             }
           }
@@ -13845,7 +13845,7 @@
               "note": "",
               "match": {
                 "include": "greater\\s*lair",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
               }
             }
           }
@@ -13877,7 +13877,7 @@
               "note": "",
               "match": {
                 "include": "lair\\s*keys?",
-                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
               }
             }
           }
@@ -13909,7 +13909,7 @@
               "note": "",
               "match": {
                 "include": "betrayer",
-                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
               }
             }
           }
@@ -13941,7 +13941,7 @@
               "note": "",
               "match": {
                 "include": "crux",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
               }
             }
           }
@@ -13981,7 +13981,7 @@
               "note": "",
               "match": {
                 "include": "bobcat\\s*(iv|4)\\b",
-                "exclude": "tempest|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+                "exclude": "tempest|blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
               }
             }
           }
@@ -14010,7 +14010,7 @@
               "note": "",
               "match": {
                 "include": "tempest\\s*(iv|4)\\b",
-                "exclude": "bobcat|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+                "exclude": "bobcat|blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
               }
             }
           }
@@ -14039,7 +14039,7 @@
               "note": "",
               "match": {
                 "include": "herbal\\s*bandage",
-                "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+                "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
               }
             }
           }
@@ -14068,7 +14068,7 @@
               "note": "",
               "match": {
                 "include": "snap\\s*hook",
-                "exclude": "blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+                "exclude": "blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
               }
             }
           }
@@ -14097,7 +14097,7 @@
               "note": "",
               "match": {
                 "include": "looting\\s*mk\\.?\\s*3[\\s\\S]*survivor|survivor[\\s\\S]*looting\\s*mk\\.?\\s*3",
-                "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods"
+                "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
               }
             }
           }
@@ -14132,7 +14132,7 @@
               "note": "",
               "match": {
                 "include": "(?=[\\s\\S]*(soul\\s*core\\s*of\\s*jiquani))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "exclude": "hardcore|\\+\\s*(?:x\\s*)?\\d"
               }
             }
           }
@@ -14156,7 +14156,7 @@
               "note": "",
               "match": {
                 "include": "(?=[\\s\\S]*(neural\\s*catalyst))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "exclude": "hardcore|\\+\\s*(?:x\\s*)?\\d"
               }
             }
           }
@@ -14180,7 +14180,7 @@
               "note": "",
               "match": {
                 "include": "(?=[\\s\\S]*(omen\\s*of\\s*amelioration))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "exclude": "hardcore|\\+\\s*(?:x\\s*)?\\d"
               }
             }
           }
@@ -14204,7 +14204,7 @@
               "note": "",
               "match": {
                 "include": "(?=[\\s\\S]*(omen\\s*of\\s*resurgence))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "exclude": "hardcore|\\+\\s*(?:x\\s*)?\\d"
               }
             }
           }
@@ -14228,7 +14228,7 @@
               "note": "",
               "match": {
                 "include": "(?=[\\s\\S]*(farrul'?s?\\s*rune\\s*of\\s*the\\s*chase))(?=[\\s\\S]*runes\\s*of\\s*aldur)",
-                "exclude": "hardcore|\\+"
+                "exclude": "hardcore|\\+\\s*(?:x\\s*)?\\d"
               }
             }
           }

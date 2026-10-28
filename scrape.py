@@ -1540,6 +1540,9 @@ def cheapest_per_lock(offers, target):
     return best
 
 
+DEFAULT_COUNT_RE = r"(?:\bx|[×*])\s*(\d[\d,]*)\b|(\d[\d,]*)\s*[x×*](?![a-z0-9])|\b(\d[\d,]*)\s*x\b"
+
+
 def cheapest_matching(offers, rule):
     """Secondary-market listings are free-text, so a product can carry a match
     rule in urls.json: {"include": regex, "exclude": regex, "count": regex whose
@@ -1547,7 +1550,7 @@ def cheapest_matching(offers, rule):
     offers: [(title_text, price_usd, units_per_price)] -> lowest USD per G2G unit."""
     inc = re.compile(rule.get("include") or ".", re.I)
     exc = re.compile(rule["exclude"], re.I) if rule.get("exclude") else None
-    cnt = re.compile(rule.get("count") or r"(?:\bx|[×*])\s*(\d[\d,]*)\b|(\d[\d,]*)\s*[x×*](?![a-z0-9])|\b(\d[\d,]*)\s*x\b", re.I | re.M)
+    cnt = re.compile(rule.get("count") or DEFAULT_COUNT_RE, re.I | re.M)
     per = float(rule.get("per") or 1)
     best = None
     for title, price, units in offers:
@@ -1590,7 +1593,26 @@ async def adapter_playerauctions(page, url, denom):
         m = re.match(r"\$\s*([\d,.]+)\s*/\s*(\d+)", unit)
         if m:
             offers.append((text, float(m.group(1).replace(",", "")), int(m.group(2))))
-    best = cheapest_matching(offers, rule) if rule else cheapest_per_lock(offers, target)
+    if rule:
+        # Drop the quantity stepper ("+" / "-" lines) so it can't trip a rule's
+        # exclude, then decide per row whether "$X / 1" is already per item:
+        # "10x Tempest IV ... $1.299 / 1  $12.99" is already per gun (10 x 1.299).
+        cnt = re.compile(rule.get("count") or DEFAULT_COUNT_RE, re.I | re.M)
+        per_item = []
+        for text, price, units in offers:
+            text = "\n".join(l for l in text.split("\n") if l.strip() not in ("+", "-", "\u2212"))
+            each = price / (units or 1)
+            m = cnt.search(text)
+            n = float(next((g for g in m.groups() if g and g[0].isdigit()), "1").replace(",", "")) if m else 1.0
+            if n > 1:
+                tm = re.search(r"\$\s*[\d,.]+\s*/\s*\d+\s*\$\s*([\d,.]+)", text)
+                total = float(tm.group(1).replace(",", "")) if tm else None
+                if not (total and abs(total - each * n) <= max(0.02, 0.02 * total)):
+                    each /= n
+            per_item.append((text, each, 1))
+        best = cheapest_matching(per_item, dict(rule, count=r"(?!)"))
+    else:
+        best = cheapest_per_lock(offers, target)
     if not best:
         # Record what the page showed so a wrong link or new layout can be spotted
         # from scrape_report.json (PlayerAuctions can't be opened outside the scraper).
