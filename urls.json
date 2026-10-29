@@ -14437,6 +14437,952 @@
           }
         }
       ]
+    },
+    "WoW Classic Era": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Spineshatter [EU] - Alliance",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-classic-gold/offer/group?fa=lgc_27816_dropdown_18%3Algc_27816_dropdown_18_54764&brand_id=lgc_game_27816&service_id=lgc_service_1&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/wow-classic-gold/g/92-0-0?te_v0=EU%20Anniversary&te_v1=Spineshatter&te_v2=Alliance&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/wow-classic-era/Gold-1-24975?q=Spineshatter",
+              "note": "",
+              "match": {
+                "include": "spineshatter[\\s\\S]*alliance[\\s\\S]*anniversary",
+                "exclude": "hardcore|season|sod",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Spineshatter [EU] - Horde",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-classic-gold/offer/group?fa=lgc_27816_dropdown_18%3Algc_27816_dropdown_18_54765&brand_id=lgc_game_27816&service_id=lgc_service_1&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/wow-classic-gold/g/92-0-0?te_v0=EU%20Anniversary&te_v1=Spineshatter&te_v2=Horde&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/wow-classic-era/Gold-1-24975?q=Spineshatter",
+              "note": "",
+              "match": {
+                "include": "spineshatter[\\s\\S]*horde[\\s\\S]*anniversary",
+                "exclude": "hardcore|season|sod",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Nightslayer [US] - Alliance",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-classic-gold/offer/group?fa=lgc_27816_platform%3Algc_27816_platform_54788&brand_id=lgc_game_27816&service_id=lgc_service_1&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/wow-classic-gold/g/92-0-0?te_v0=NA%20%26%20OC%20Anniversary&te_v1=Nightslayer&te_v2=Alliance&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/wow-classic-era/Gold-1-24975?q=Nightslayer",
+              "note": "",
+              "match": {
+                "include": "nightslayer[\\s\\S]*alliance[\\s\\S]*anniversary",
+                "exclude": "hardcore|season|sod",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Nightslayer [US] - Horde",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-classic-gold/offer/group?fa=lgc_27816_platform%3Algc_27816_platform_54789&brand_id=lgc_game_27816&service_id=lgc_service_1&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/wow-classic-gold/g/92-0-0?te_v0=NA%20%26%20OC%20Anniversary&te_v1=Nightslayer&te_v2=Horde&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/wow-classic-era/Gold-1-24975?q=Nightslayer",
+              "note": "",
+              "match": {
+                "include": "nightslayer[\\s\\S]*horde[\\s\\S]*anniversary",
+                "exclude": "hardcore|season|sod",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Dreamscythe [US] - Alliance",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-classic-gold/offer/group?fa=lgc_27816_platform%3Algc_27816_platform_54790&brand_id=lgc_game_27816&service_id=lgc_service_1&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/wow-classic-gold/g/92-0-0?te_v0=NA%20%26%20OC%20Anniversary&te_v1=Dreamscythe&te_v2=Alliance&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/wow-classic-era/Gold-1-24975?q=Dreamscythe",
+              "note": "",
+              "match": {
+                "include": "dreamscythe[\\s\\S]*alliance[\\s\\S]*anniversary",
+                "exclude": "hardcore|season|sod",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Dreamscythe [US] - Horde",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-classic-gold/offer/group?fa=lgc_27816_platform%3Algc_27816_platform_54791&brand_id=lgc_game_27816&service_id=lgc_service_1&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/wow-classic-gold/g/92-0-0?te_v0=NA%20%26%20OC%20Anniversary&te_v1=Dreamscythe&te_v2=Horde&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/wow-classic-era/Gold-1-24975?q=Dreamscythe",
+              "note": "",
+              "match": {
+                "include": "dreamscythe[\\s\\S]*horde[\\s\\S]*anniversary",
+                "exclude": "hardcore|season|sod",
+                "count": "(?!)"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "WoW Retail": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Silvermoon [EU] - Alliance",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-gold/offer/group?fa=lgc_2299_dropdown_17%3Algc_2299_dropdown_17_42098&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/buy-wow-gold/g/0-0-0?te_v0=EU&te_v1=Silvermoon&te_v2=Alliance&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/world-of-warcraft-dragonflight/Gold-1-19062?q=Silvermoon",
+              "note": "",
+              "match": {
+                "include": "^silvermoon\\W+alliance\\W+eu\\b",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Kazzak [EU] - Horde",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-gold/offer/group?fa=lgc_2299_dropdown_17%3Algc_2299_dropdown_17_41959&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/buy-wow-gold/g/0-0-0?te_v0=EU&te_v1=Kazzak&te_v2=Horde&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/world-of-warcraft-dragonflight/Gold-1-19062?q=Kazzak",
+              "note": "",
+              "match": {
+                "include": "^kazzak\\W+horde\\W+eu\\b",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Tarren Mill [EU] - Horde",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-gold/offer/group?fa=lgc_2299_dropdown_17%3Algc_2299_dropdown_17_42127&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/buy-wow-gold/g/0-0-0?te_v0=EU&te_v1=Tarren%20Mill&te_v2=Horde&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/world-of-warcraft-dragonflight/Gold-1-19062?q=Tarren%20Mill",
+              "note": "",
+              "match": {
+                "include": "^tarren\\s*mill\\W+horde\\W+eu\\b",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Draenor [EU] - Horde",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-gold/offer/group?fa=lgc_2299_dropdown_17%3Algc_2299_dropdown_17_41871&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/buy-wow-gold/g/0-0-0?te_v0=EU&te_v1=Draenor&te_v2=Horde&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/world-of-warcraft-dragonflight/Gold-1-19062?q=Draenor",
+              "note": "",
+              "match": {
+                "include": "^draenor\\W+horde\\W+eu\\b",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Area 52 [US] - Horde",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/wow-gold/offer/group?fa=lgc_2299_platform%3Algc_2299_platform_40012&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/buy-wow-gold/g/0-0-0?te_v0=NA&te_v1=Area%2052&te_v2=Horde&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/world-of-warcraft-dragonflight/Gold-1-19062?q=Area%2052",
+              "note": "",
+              "match": {
+                "include": "^area\\s*52\\W+horde\\W+us\\b",
+                "count": "(?!)"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Path of Exile 2 Currency": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Runes of Aldur Standard - Divine Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_62230%7Clgc_27013_tier%3Algc_27013_tier_54399&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Runes%20of%20Aldur%20Standard&path-of-exile-2-orbs=divine-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=divine",
+              "note": "",
+              "match": {
+                "include": "(?m)^divine\\s*orb\\s*-\\s*runes\\s*of\\s*aldur\\s*standard\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Runes of Aldur Standard - Exalted Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_62230%7Clgc_27013_tier%3Algc_27013_tier_54400&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Runes%20of%20Aldur%20Standard&path-of-exile-2-orbs=exalted-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=exalted",
+              "note": "",
+              "match": {
+                "include": "(?m)^exalted\\s*orb\\s*-\\s*runes\\s*of\\s*aldur\\s*standard\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Runes of Aldur Standard - Mirror of Kalandra",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_62230%7Clgc_27013_tier%3Algc_27013_tier_54403&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Runes%20of%20Aldur%20Standard&path-of-exile-2-orbs=mirror-of-kalandra&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=mirror",
+              "note": "",
+              "match": {
+                "include": "(?m)^mirror\\s*of\\s*kalandra\\s*-\\s*runes\\s*of\\s*aldur\\s*standard\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Early Access Standard - Divine Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_31854%7Clgc_27013_tier%3Algc_27013_tier_54399&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Standard&path-of-exile-2-orbs=divine-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=divine",
+              "note": "",
+              "match": {
+                "include": "(?m)^divine\\s*orb\\s*-\\s*standard\\s*\\(early access\\)\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Early Access Standard - Exalted Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_31854%7Clgc_27013_tier%3Algc_27013_tier_54400&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Standard&path-of-exile-2-orbs=exalted-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=exalted",
+              "note": "",
+              "match": {
+                "include": "(?m)^exalted\\s*orb\\s*-\\s*standard\\s*\\(early access\\)\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Early Access Standard - Mirror of Kalandra",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_31854%7Clgc_27013_tier%3Algc_27013_tier_54403&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Standard&path-of-exile-2-orbs=mirror-of-kalandra&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=mirror",
+              "note": "",
+              "match": {
+                "include": "(?m)^mirror\\s*of\\s*kalandra\\s*-\\s*standard\\s*\\(early access\\)\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Forbidden Rites Standard - Divine Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_63992%7Clgc_27013_tier%3Algc_27013_tier_54399&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Forbidden%20Rites%20Standard&path-of-exile-2-orbs=divine-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=divine",
+              "note": "",
+              "match": {
+                "include": "(?m)^divine\\s*orb\\s*-\\s*forbidden\\s*rites\\s*standard\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Forbidden Rites Standard - Exalted Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_63992%7Clgc_27013_tier%3Algc_27013_tier_54400&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Forbidden%20Rites%20Standard&path-of-exile-2-orbs=exalted-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=exalted",
+              "note": "",
+              "match": {
+                "include": "(?m)^exalted\\s*orb\\s*-\\s*forbidden\\s*rites\\s*standard\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Forbidden Rites Standard - Mirror of Kalandra",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/path-of-exile-2-currency/offer/group?fa=lgc_27013_platform%3Algc_27013_platform_63992%7Clgc_27013_tier%3Algc_27013_tier_54403&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-2-currency/g/220?te_v0=Forbidden%20Rites%20Standard&path-of-exile-2-orbs=mirror-of-kalandra&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/path-of-exile-2/Gold-1-9549?q=mirror",
+              "note": "",
+              "match": {
+                "include": "(?m)^mirror\\s*of\\s*kalandra\\s*-\\s*forbidden\\s*rites\\s*standard\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Path of Exile 1 Currency": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Standard - Divine Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/poe-currency/offer/group?fa=lgc_19398_server%3Algc_19398_server_24104%7Clgc_19398_tier%3Algc_19398_tier_42692&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-currency/g/2-0-0?te_v0=PC&te_v1=Standard&path-of-exile-orbs=divine-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            }
+          }
+        },
+        {
+          "name": "Standard - Mirror of Kalandra",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/poe-currency/offer/group?fa=lgc_19398_server%3Algc_19398_server_24104%7Clgc_19398_tier%3Algc_19398_tier_42698&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-currency/g/2-0-0?te_v0=PC&te_v1=Standard&path-of-exile-orbs=mirror-of-kalandra&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            }
+          }
+        },
+        {
+          "name": "Standard - Chaos Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/poe-currency/offer/group?fa=lgc_19398_server%3Algc_19398_server_24104%7Clgc_19398_tier%3Algc_19398_tier_42689&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-currency/g/2-0-0?te_v0=PC&te_v1=Standard&path-of-exile-orbs=chaos-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            }
+          }
+        },
+        {
+          "name": "Curse of the Allflame - Divine Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/poe-currency/offer/group?fa=lgc_19398_server%3Algc_19398_server_63274%7Clgc_19398_tier%3Algc_19398_tier_42692&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-currency/g/2-0-0?te_v0=PC&te_v1=Curse%20of%20The%20Allflames%20SC&path-of-exile-orbs=divine-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            }
+          }
+        },
+        {
+          "name": "Curse of the Allflame - Mirror of Kalandra",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/poe-currency/offer/group?fa=lgc_19398_server%3Algc_19398_server_63274%7Clgc_19398_tier%3Algc_19398_tier_42698&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-currency/g/2-0-0?te_v0=PC&te_v1=Curse%20of%20The%20Allflames%20SC&path-of-exile-orbs=mirror-of-kalandra&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            }
+          }
+        },
+        {
+          "name": "Curse of the Allflame - Exalted Orb",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/poe-currency/offer/group?fa=lgc_19398_server%3Algc_19398_server_63274%7Clgc_19398_tier%3Algc_19398_tier_42693&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/poe-currency/g/2-0-0?te_v0=PC&te_v1=Curse%20of%20The%20Allflames%20SC&path-of-exile-orbs=exalted-orb&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Lost Ark Gold": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Luterra - US East",
+          "urls": {}
+        },
+        {
+          "name": "Thaemine - US West",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/lost-ark-gold/offer/group?fa=lgc_23027_dropdown_18%3Algc_23027_dropdown_18_50515&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/buy-lost-ark-gold/g/50-0-0?te_v0=NA&te_v1=Thaemine&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/LA/Gold-1-1709",
+              "note": "",
+              "match": {
+                "include": "thaemine",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Nineveh - US East",
+          "urls": {}
+        },
+        {
+          "name": "Ratik - EU Central",
+          "urls": {}
+        },
+        {
+          "name": "Gienah - EU Central",
+          "urls": {}
+        }
+      ]
+    },
+    "OSRS Gold": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Old School RuneScape - Main",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/os-gold/offer/group?fa=lgc_19746_server%3Algc_19746_server_1577&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/osrs-gold/g/10-0-0?offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/osrs/Gold-1-1478",
+              "note": ""
+            }
+          }
+        }
+      ]
+    },
+    "Diablo 4 Gold": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Season 15 - Hardcore",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-gold/offer/group?fa=lgc_26891_platform%3Algc_26891_platform_64148&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-gold/g/132-0-0?te_v0=Seasonal%20Realm%20-%20Hardcore&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/Gold-1-8685",
+              "note": "",
+              "match": {
+                "include": "season\\s*15\\s*hardcore",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Season 15 - Softcore",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-gold/offer/group?fa=lgc_26891_platform%3Algc_26891_platform_64149&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-gold/g/132-0-0?te_v0=Seasonal%20Realm%20-%20Softcore&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/Gold-1-8685",
+              "note": "",
+              "match": {
+                "include": "season\\s*15\\s*softcore",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Eternal - Hardcore",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-gold/offer/group?fa=lgc_26891_platform%3Algc_26891_platform_31722&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-gold/g/132-0-0?te_v0=Eternal%20Realm%20-%20Hardcore&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/Gold-1-8685",
+              "note": "",
+              "match": {
+                "include": "hardcore\\W*eternal",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Eternal - Softcore",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/diablo-4-gold/offer/group?fa=lgc_26891_platform%3Algc_26891_platform_31721&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/diablo-4-gold/g/132-0-0?te_v0=Eternal%20Realm%20-%20Softcore&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/Gold-1-8685",
+              "note": "",
+              "match": {
+                "include": "softcore\\W*eternal",
+                "count": "(?!)"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Aion 2 Kinah": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Israphel [NA East] - Asmodian",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/aion-2-kinah/offer/group?fa=lgc_37781_dropdown_11%3Algc_37781_dropdown_11_64654&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/aion-2-kinah/g/360?te_v0=NA%20East&te_v1=Asmodian&te_v2=Israphel&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/aion-2/kinah-1-35563?q=Israphel",
+              "note": "",
+              "match": {
+                "include": "^israphel\\s*-\\s*asmodian\\s*-\\s*na\\s*east\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Israphel [NA West] - Asmodian",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/aion-2-kinah/offer/group?fa=lgc_37781_dropdown_11%3Algc_37781_dropdown_11_64651&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/aion-2-kinah/g/360?te_v0=NA%20West&te_v1=Asmodian&te_v2=Israphel&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/aion-2/kinah-1-35563?q=Israphel",
+              "note": "",
+              "match": {
+                "include": "^israphel\\s*-\\s*asmodian\\s*-\\s*na\\s*west\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Zikel [EU] - Asmodian",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/aion-2-kinah/offer/group?fa=lgc_37781_dropdown_12%3Algc_37781_dropdown_12_64647&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/aion-2-kinah/g/360?te_v0=Europe&te_v1=Asmodian&te_v2=Zikel&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/aion-2/kinah-1-35563?q=Zikel",
+              "note": "",
+              "match": {
+                "include": "^zikel\\s*-\\s*asmodian\\s*-\\s*eu\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Triniel [EU] - Asmodian",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/aion-2-kinah/offer/group?fa=lgc_37781_dropdown_12%3Algc_37781_dropdown_12_64648&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/aion-2-kinah/g/360?te_v0=Europe&te_v1=Asmodian&te_v2=Triniel&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/aion-2/kinah-1-35563?q=Triniel",
+              "note": "",
+              "match": {
+                "include": "^triniel\\s*-\\s*asmodian\\s*-\\s*eu\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Siel [Asia] - Elyos",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/aion-2-kinah/offer/group?fa=lgc_37781_dropdown_13%3Algc_37781_dropdown_13_64656&sort=lowest_price",
+              "note": ""
+            },
+            "Eldorado": {
+              "url": "https://www.eldorado.gg/aion-2-kinah/g/360?te_v0=Asia&te_v1=Elyos&te_v2=Siel&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "unit": 1000000.0
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/aion-2/kinah-1-35563?q=Siel",
+              "note": "",
+              "match": {
+                "include": "^siel\\s*-\\s*elyos\\s*-\\s*asia\\s*$",
+                "count": "(?!)"
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

@@ -1021,6 +1021,12 @@ def g2g_api_url(catalog_url, seo_override=None):
     q = _uparse.parse_qs(_uparse.urlparse(catalog_url).query)
     params = {"seo_term": seo, "sort": "lowest_price", "page_size": "20",
               "group": "0", "currency": "USD", "country": "US", "v": "v2"}
+    if q.get("brand_id"):
+        # Some games (e.g. WoW Classic Era) share another game's page and are
+        # only reachable in the API by their game + service ids.
+        del params["seo_term"]
+        params["brand_id"] = q["brand_id"][0]
+        params["service_id"] = (q.get("service_id") or ["lgc_service_1"])[0]
     if q.get("fa"):
         params["filter_attr"] = q["fa"][0]
     if q.get("region_id"):
@@ -1660,7 +1666,7 @@ async def adapter_eldorado(page, url, denom):
     # (/oi/...) also show unrelated "More like this" offers, so they keep the
     # generic reader.
     rule = denom.get("match")
-    if rule:
+    if rule and "/g/" not in urlparse(url).path:
         # Item searches only show the first page and match words exactly ("lock"
         # and "locks" give different listings), so a rule may list extra
         # "queries"; every one is searched and the cheapest match wins.
@@ -1674,8 +1680,23 @@ async def adapter_eldorado(page, url, denom):
         return (best, "USD") if best else None
     if "/g/" not in urlparse(url).path:
         return await generic_extract(page, url, denom)
+    # Currency page: "Other sellers" rows end in "$0.0199 / K" (unit, K, M or B).
+    # Sellers with no reviews (bulk listings with huge stock and minimums) are
+    # skipped. "unit" in a match rule is the G2G unit in base units (1000 for
+    # "K Gold", 1e6 for "Mil Gold").
     body = await page.inner_text("body")
-    vals = [float(v.replace(",", "")) for v in re.findall(r"\$\s*([\d,]*\.?\d+)\s*/\s*unit", body)]
+    mult = {"unit": 1, "K": 1e3, "M": 1e6, "B": 1e9}
+    per = float((denom.get("match") or {}).get("unit") or 1)
+    sellers = body.split("Other sellers", 1)[-1]
+    vals, block = [], []
+    for line in (l.strip() for l in sellers.split("\n")):
+        m = re.match(r"^\$\s*([\d,]*\.?\d+)\s*/\s*(unit|K|M|B)$", line)
+        if m:
+            if any(re.search(r"\breviews?$", b) for b in block):
+                vals.append(float(m.group(1).replace(",", "")) / mult[m.group(2)] * per)
+            block = []
+        elif line:
+            block.append(line)
     return (min(vals), "USD") if vals else None
 
 
@@ -1799,7 +1820,7 @@ async def adapter_z2u(page, url, denom):
         best = cheapest_matching(offers, rule)
         return (best, "USD") if best else NA
     vals = [float(v.replace(",", "")) for pair in
-            re.findall(r"\b1\s*=\s*USD\s*\$\s*([\d,]*\.?\d+)|Offers\s*From\s*\$\s*([\d,]*\.?\d+)", body)
+            re.findall(r"\b1\s*(?:[A-Za-z]+\s*){0,3}=\s*USD\s*\$\s*([\d,]*\.?\d+)|Offers\s*From\s*\$\s*([\d,]*\.?\d+)", body)
             for v in pair if v]
     if not vals:
         return None   # no listing price on the page; scanning other numbers guesses wrong

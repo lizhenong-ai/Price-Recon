@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T05:00:47.557167+00:00",
+  "generated": "2026-10-29T07:15:07.610543+00:00",
   "source": "scrape.py",
   "prices": {
     "PlayStation": {
@@ -5105,7 +5105,7 @@
     "Torchlight: Infinite": {
       "Flame Elementium (S14 Tartarus Season Standard)": {
         "G2G": 0.000942,
-        "Eldorado": 0.00099,
+        "Eldorado": 0.00098,
         "Z2U": 0.00689,
         "G2A": "N/A"
       }
@@ -5135,6 +5135,201 @@
         "Eneba": 20.42,
         "G2A": "N/A",
         "Seagm": 19.4
+      }
+    },
+    "WoW Classic Era": {
+      "Spineshatter [EU] - Horde": {
+        "G2G": 0.001748,
+        "Z2U": 0.00518,
+        "Eldorado": 0.00212
+      },
+      "Nightslayer [US] - Alliance": {
+        "Eldorado": 0.00318,
+        "Z2U": 0.0055,
+        "G2G": 0.002838
+      },
+      "Dreamscythe [US] - Horde": {
+        "Z2U": 0.0055,
+        "G2G": 0.003528,
+        "Eldorado": 0.0039
+      },
+      "Nightslayer [US] - Horde": {
+        "G2G": 0.002512,
+        "Eldorado": 0.00357,
+        "Z2U": 0.0055
+      },
+      "Dreamscythe [US] - Alliance": {
+        "G2G": 0.00292,
+        "Eldorado": 0.00388,
+        "Z2U": 0.0055
+      },
+      "Spineshatter [EU] - Alliance": {
+        "Eldorado": 0.00238,
+        "G2G": 0.002219,
+        "Z2U": 0.00518
+      }
+    },
+    "Aion 2 Kinah": {
+      "Israphel [NA East] - Asmodian": {
+        "G2G": 0.8639,
+        "Z2U": 0.88,
+        "Eldorado": 0.93
+      },
+      "Israphel [NA West] - Asmodian": {
+        "G2G": 0.6982,
+        "Z2U": 0.679,
+        "Eldorado": 0.7199
+      },
+      "Zikel [EU] - Asmodian": {
+        "G2G": 0.7088,
+        "Z2U": 0.72,
+        "Eldorado": 0.7425
+      },
+      "Triniel [EU] - Asmodian": {
+        "G2G": 0.8169,
+        "Z2U": 0.734,
+        "Eldorado": 0.8523
+      },
+      "Siel [Asia] - Elyos": {
+        "G2G": 0.7,
+        "Z2U": 0.73,
+        "Eldorado": 0.7628
+      }
+    },
+    "Path of Exile 1 Currency": {
+      "Standard - Divine Orb": {
+        "G2G": 0.0106,
+        "Eldorado": 0.0118
+      },
+      "Standard - Mirror of Kalandra": {
+        "G2G": 15.5,
+        "Eldorado": 17.66
+      },
+      "Standard - Chaos Orb": {
+        "G2G": 0.000376,
+        "Eldorado": 0.0005
+      },
+      "Curse of the Allflame - Divine Orb": {
+        "G2G": 0.016,
+        "Eldorado": 0.0183
+      },
+      "Curse of the Allflame - Mirror of Kalandra": {
+        "G2G": 18.99,
+        "Eldorado": 21.73
+      },
+      "Curse of the Allflame - Exalted Orb": {
+        "G2G": 0.0003,
+        "Eldorado": 0.0019
+      }
+    },
+    "Path of Exile 2 Currency": {
+      "Forbidden Rites Standard - Mirror of Kalandra": {
+        "Z2U": 54.99,
+        "G2G": 28.28,
+        "Eldorado": 31.98
+      },
+      "Runes of Aldur Standard - Divine Orb": {
+        "G2G": 0.006853,
+        "Z2U": 0.0075,
+        "Eldorado": 0.00718
+      },
+      "Runes of Aldur Standard - Exalted Orb": {
+        "G2G": 3.5e-05,
+        "Z2U": 4.3e-05,
+        "Eldorado": 7e-05
+      },
+      "Runes of Aldur Standard - Mirror of Kalandra": {
+        "G2G": 41.01,
+        "Z2U": 84.99,
+        "Eldorado": 41.95
+      },
+      "Early Access Standard - Divine Orb": {
+        "G2G": 0.0013,
+        "Z2U": 0.00175,
+        "Eldorado": 0.00145
+      },
+      "Early Access Standard - Exalted Orb": {
+        "G2G": 8e-05,
+        "Z2U": 0.000215,
+        "Eldorado": 0.0002
+      },
+      "Early Access Standard - Mirror of Kalandra": {
+        "G2G": 13.89,
+        "Z2U": 997.99,
+        "Eldorado": 14.93
+      },
+      "Forbidden Rites Standard - Divine Orb": {
+        "G2G": 0.003946,
+        "Z2U": 0.00999,
+        "Eldorado": 0.00399
+      },
+      "Forbidden Rites Standard - Exalted Orb": {
+        "G2G": 3.3e-05,
+        "Z2U": 8e-05,
+        "Eldorado": 2e-05
+      }
+    },
+    "Lost Ark Gold": {
+      "Thaemine - US West": {
+        "G2G": 0.017,
+        "Z2U": 0.027,
+        "Eldorado": 0.0193
+      }
+    },
+    "OSRS Gold": {
+      "Old School RuneScape - Main": {
+        "G2G": 0.275,
+        "Z2U": 0.3099,
+        "Eldorado": 0.2575
+      }
+    },
+    "Diablo 4 Gold": {
+      "Season 15 - Hardcore": {
+        "G2G": 9.4e-05,
+        "Z2U": 0.000204,
+        "Eldorado": 0.00026
+      },
+      "Season 15 - Softcore": {
+        "G2G": 2e-06,
+        "Z2U": 2.2e-05,
+        "Eldorado": 1e-05
+      },
+      "Eternal - Hardcore": {
+        "G2G": 1.9e-05,
+        "Z2U": 2.3e-05,
+        "Eldorado": 0.0025
+      },
+      "Eternal - Softcore": {
+        "G2G": 1.3e-05,
+        "Z2U": 0.000225,
+        "Eldorado": 0.0002
+      }
+    },
+    "WoW Retail": {
+      "Silvermoon [EU] - Alliance": {
+        "G2G": 0.033,
+        "Z2U": 0.0539,
+        "Eldorado": 0.0389
+      },
+      "Kazzak [EU] - Horde": {
+        "G2G": 0.033,
+        "Z2U": 0.0409,
+        "Eldorado": 0.0389
+      },
+      "Tarren Mill [EU] - Horde": {
+        "G2G": 0.033,
+        "Z2U": 0.0539,
+        "Eldorado": 0.0389
+      },
+      "Draenor [EU] - Horde": {
+        "G2G": 0.0331,
+        "Z2U": 0.053,
+        "Eldorado": 0.0389
+      },
+      "Area 52 [US] - Horde": {
+        "G2G": 0.0415,
+        "Z2U": 0.0509,
+        "Eldorado": 0.0401
       }
     }
   }
