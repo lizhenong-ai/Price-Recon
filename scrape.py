@@ -42,7 +42,7 @@ import time
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urlparse, urljoin, quote_plus
+from urllib.parse import urlparse, urljoin, quote, quote_plus
 
 from playwright.async_api import async_playwright
 
@@ -1632,6 +1632,28 @@ async def adapter_playerauctions(page, url, denom):
     return (best, "USD") if best else None
 
 
+async def _eldorado_offers(page):
+    """[(title_text, usd, 1)] from an Eldorado search page."""
+    # Page text after "N items found": each offer is a few lines (tags such as
+    # "Permanent", title, seller, rating) ending in "$2.97 / unit"; structured
+    # items (e.g. Grow a Garden 2 seeds) are cards: name, "From", "$0.05".
+    lines = [l.strip() for l in (await page.inner_text("body")).split("\n") if l.strip()]
+    start = next((k + 1 for k, l in enumerate(lines) if re.search(r"\bitems? found$", l)), 0)
+    offers, buf = [], []
+    for k in range(start, len(lines)):
+        line = lines[k]
+        m = re.match(r"^\$\s*([\d,]*\.?\d+)\s*/\s*unit$", line)
+        if m:
+            offers.append(("\n".join(buf), float(m.group(1).replace(",", "")), 1))
+            buf = []
+        elif line == "From" and k + 1 < len(lines) and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]):
+            offers.append((buf[-1] if buf else "", float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
+            buf = []
+        elif not line.startswith("$") and not re.match(r"^\d+\s*(min|h|hours?|days?)$", line, re.I):
+            buf.append(line)
+    return offers
+
+
 async def adapter_eldorado(page, url, denom):
     # Locks listing (".../g/...?growtopia-lock-type=...&offerSortingCriterion=Cheapest"):
     # every seller shows "$X / unit" where one unit is one lock. Item pages
@@ -1639,23 +1661,15 @@ async def adapter_eldorado(page, url, denom):
     # generic reader.
     rule = denom.get("match")
     if rule:
-        # Page text after "N items found": each offer is a few lines (tags such as
-        # "Permanent", title, seller, rating) ending in "$2.97 / unit"; structured
-        # items (e.g. Grow a Garden 2 seeds) are cards: name, "From", "$0.05".
-        lines = [l.strip() for l in (await page.inner_text("body")).split("\n") if l.strip()]
-        start = next((k + 1 for k, l in enumerate(lines) if re.search(r"\bitems? found$", l)), 0)
-        offers, buf = [], []
-        for k in range(start, len(lines)):
-            line = lines[k]
-            m = re.match(r"^\$\s*([\d,]*\.?\d+)\s*/\s*unit$", line)
-            if m:
-                offers.append(("\n".join(buf), float(m.group(1).replace(",", "")), 1))
-                buf = []
-            elif line == "From" and k + 1 < len(lines) and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]):
-                offers.append((buf[-1] if buf else "", float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
-                buf = []
-            elif not line.startswith("$") and not re.match(r"^\d+\s*(min|h|hours?|days?)$", line, re.I):
-                buf.append(line)
+        # Item searches only show the first page and match words exactly ("lock"
+        # and "locks" give different listings), so a rule may list extra
+        # "queries"; every one is searched and the cheapest match wins.
+        offers = await _eldorado_offers(page)
+        for q in rule.get("queries") or []:
+            alt = re.sub(r"searchQuery=[^&]*", "searchQuery=" + quote(q), url)
+            await page.goto(alt, wait_until="domcontentloaded", timeout=45000)
+            await page.wait_for_timeout(3500)
+            offers += await _eldorado_offers(page)
         best = cheapest_matching(offers, rule)
         return (best, "USD") if best else None
     if "/g/" not in urlparse(url).path:

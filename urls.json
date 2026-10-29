@@ -13370,7 +13370,11 @@
               "note": "",
               "match": {
                 "include": "dragon'?s?\\s*breath",
-                "exclude": "\\+|bundle|\\band\\b|&"
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "Dragon's Breath",
+                  "Dragon Breath Seed"
+                ]
               }
             },
             "iGVault": {
@@ -13402,7 +13406,10 @@
               "note": "",
               "match": {
                 "include": "super\\s*watering\\s*can",
-                "exclude": "cider|syrup|\\+|bundle|\\band\\b|&"
+                "exclude": "cider|syrup|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "Super Watering"
+                ]
               }
             },
             "iGVault": {
@@ -13434,7 +13441,10 @@
               "note": "",
               "match": {
                 "include": "star\\s*fruit",
-                "exclude": "\\+|bundle|\\band\\b|&"
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "Star Fruit"
+                ]
               }
             },
             "iGVault": {
@@ -13466,9 +13476,12 @@
               "note": "",
               "match": {
                 "include": "sim(ulation)?\\s*data",
-                "exclude": "\\+|bundle|\\band\\b|&",
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
                 "count": "(\\d[\\d,]*)\\s*(k)?\\s*(?:sim|simulation)",
-                "per": 10000
+                "per": 10000,
+                "queries": [
+                  "Simulation"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13494,7 +13507,10 @@
               "note": "",
               "match": {
                 "include": "portal[\\s\\S]*\\bperm|\\bperm[\\s\\S]*portal",
-                "exclude": "non[\\s-]*perm|physical|\\+|bundle|\\band\\b|&"
+                "exclude": "non[\\s-]*perm|physical|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "Portal"
+                ]
               }
             },
             "Z2U": {
@@ -13522,7 +13538,11 @@
               "note": "",
               "match": {
                 "include": "dragon[\\s\\S]*\\bperm|\\bperm[\\s\\S]*dragon",
-                "exclude": "non[\\s-]*perm|physical|\\+|bundle|\\band\\b|&"
+                "exclude": "talon|claw|token|non[\\s-]*perm|physical|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "Dragon Perm",
+                  "Permanent Dragon"
+                ]
               }
             },
             "Z2U": {
@@ -13550,7 +13570,10 @@
               "note": "",
               "match": {
                 "include": "premium\\s*(battle\\s*)?pass",
-                "exclude": "vip|shiny|villain|\\+|bundle|\\band\\b|&"
+                "exclude": "vip|shiny|villain|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "Premium"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13574,7 +13597,10 @@
               "note": "",
               "match": {
                 "include": "shiny\\s*hunter",
-                "exclude": "vip|premium|\\+|bundle|\\band\\b|&"
+                "exclude": "vip|premium|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "Shiny"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13598,7 +13624,10 @@
               "note": "",
               "match": {
                 "include": "\\bvip\\b",
-                "exclude": "premium|shiny|villain|display|carry|boost|\\+|bundle|\\band\\b|&"
+                "exclude": "premium|shiny|villain|display|carry|boost|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "VIP 399"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13633,7 +13662,10 @@
               "note": "",
               "match": {
                 "include": "superior\\s*lair",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill",
+                "queries": [
+                  "Superior Lair Keys"
+                ]
               }
             },
             "iGVault": {
@@ -13665,7 +13697,10 @@
               "note": "",
               "match": {
                 "include": "greater\\s*lair",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill",
+                "queries": [
+                  "Greater Lair Keys"
+                ]
               }
             },
             "iGVault": {
@@ -13697,7 +13732,10 @@
               "note": "",
               "match": {
                 "include": "lair\\s*keys?",
-                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill",
+                "queries": [
+                  "Lair Keys"
+                ]
               }
             },
             "iGVault": {
@@ -13729,7 +13767,10 @@
               "note": "",
               "match": {
                 "include": "betrayer",
-                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill",
+                "queries": [
+                  "Husk"
+                ]
               }
             },
             "iGVault": {
@@ -13761,7 +13802,10 @@
               "note": "",
               "match": {
                 "include": "crux",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill",
+                "queries": [
+                  "Crux"
+                ]
               }
             },
             "iGVault": {
@@ -13804,8 +13848,12 @@
               "note": "",
               "match": {
                 "include": "bobcat\\s*(iv|4)\\b",
-                "exclude": "tempest|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
-                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+                "exclude": "tempest|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Bobcat 4",
+                  "Bobcat"
+                ]
               }
             },
             "Z2U": {
@@ -13833,8 +13881,12 @@
               "note": "",
               "match": {
                 "include": "tempest\\s*(iv|4)\\b",
-                "exclude": "bobcat|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
-                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+                "exclude": "bobcat|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Tempest 4",
+                  "Tempest"
+                ]
               }
             },
             "Z2U": {
@@ -13862,8 +13914,12 @@
               "note": "",
               "match": {
                 "include": "herbal\\s*bandage",
-                "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
-                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+                "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Herbal Bandages",
+                  "Bandage"
+                ]
               }
             },
             "Z2U": {
@@ -13891,8 +13947,11 @@
               "note": "",
               "match": {
                 "include": "snap\\s*hook",
-                "exclude": "blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
-                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+                "exclude": "blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Hook"
+                ]
               }
             },
             "Z2U": {
@@ -13920,8 +13979,12 @@
               "note": "",
               "match": {
                 "include": "looting\\s*mk\\.?\\s*3[\\s\\S]*survivor|survivor[\\s\\S]*looting\\s*mk\\.?\\s*3",
-                "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|\\+|&|modded|full\\s*weapon\\s*mods",
-                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])"
+                "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Looting Mk3 Survivor",
+                  "Survivor"
+                ]
               }
             },
             "Z2U": {
@@ -13960,7 +14023,7 @@
               "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
                 "include": "(?m)^Standard$[\\s\\S]*soul\\s*core\\s*of\\s*jiquani",
-                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+\\s*(?:x\\s*)?\\d"
               }
             },
             "PlayerAuctions": {
@@ -13984,7 +14047,7 @@
               "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
                 "include": "(?m)^Standard$[\\s\\S]*neural\\s*catalyst",
-                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+\\s*(?:x\\s*)?\\d"
               }
             },
             "PlayerAuctions": {
@@ -14008,7 +14071,7 @@
               "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
                 "include": "(?m)^Standard$[\\s\\S]*omen\\s*of\\s*amelioration",
-                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+\\s*(?:x\\s*)?\\d"
               }
             },
             "PlayerAuctions": {
@@ -14032,7 +14095,7 @@
               "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
                 "include": "(?m)^Standard$[\\s\\S]*omen\\s*of\\s*resurgence",
-                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+\\s*(?:x\\s*)?\\d"
               }
             },
             "PlayerAuctions": {
@@ -14056,7 +14119,7 @@
               "note": "Standard league (Eldorado has no Runes of Aldur listing)",
               "match": {
                 "include": "(?m)^Standard$[\\s\\S]*farrul'?s?\\s*rune\\s*of\\s*the\\s*chase",
-                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+"
+                "exclude": "hardcore|runes\\s*of\\s*aldur|forbidden\\s*rites|\\+\\s*(?:x\\s*)?\\d"
               }
             },
             "PlayerAuctions": {
