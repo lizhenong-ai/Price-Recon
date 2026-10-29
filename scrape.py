@@ -1720,19 +1720,58 @@ async def adapter_igv(page, url, denom):
 
 
 
+async def _z2u_wait_list(page):
+    # The offer list renders a moment after the page; wait for its header.
+    try:
+        await page.wait_for_function("document.body.innerText.includes('Product Contain')", timeout=15000)
+        await page.wait_for_timeout(1000)
+    except Exception:
+        pass
+
+
+def _z2u_offers(body):
+    """[(card_text, usd, 1)] from a Z2U listing; card_text keeps tags + title."""
+    lines = [l.strip() for l in body.split("\n") if l.strip()]
+    start = next((k + 1 for k, l in enumerate(lines) if "Product Contain" in l), 0)
+    offers, buf, k = [], [], start
+    while k < len(lines):
+        line = lines[k]
+        if line == "from" and k + 1 < len(lines) and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]):
+            offers.append(("\n".join(buf), float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
+            buf, k = [], k + 2
+            # strike-through original price ("$50 -40.02%") belongs to this card
+            if k < len(lines) and re.match(r"^\$\s*[\d,.]+\s*-?[\d.]+%$", lines[k]):
+                k += 1
+            continue
+        if line.lower() == "sold out":
+            buf = []
+        elif re.match(r"^(Sort:|Items .* Ratings and Reviews)", line):
+            if line.startswith("Items "):
+                break
+        elif not re.match(r"^\d+\s*(mins?|H|hours?|days?)$|^\d+ Offers?$", line, re.I):
+            buf.append(line)
+        k += 1
+    return offers
+
+
 async def adapter_z2u(page, url, denom):
     # Item page: the listing's own unit price reads "1 = USD $9.9". The lowest
     # price elsewhere on the page can belong to a related listing, so don't scan.
-    body = await page.inner_text("body")
     rule = denom.get("match")
+    if rule and "items-3-" in url:
+        await _z2u_wait_list(page)
+    body = await page.inner_text("body")
     if rule and "Product Contain" in body:
-        # Currency listing: blocks of "US - Season Server", "1 Offers", "from", "$0.0012".
-        lines = [l.strip() for l in body.split("\n") if l.strip()]
-        offers = []
-        for k in range(2, len(lines) - 1):
-            if lines[k] == "from" and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]) and re.search(r"\bOffers?$", lines[k - 1]):
-                offers.append((lines[k - 2], float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
-        best = cheapest_matching(offers, dict(rule, count=r"(?!)"))
+        # Search/listing page (".../items-3-<id>?q=..."): each card is a few lines
+        # (tags, title, delivery time, seller or "N Offers") then "from", "$9.9".
+        # Like Eldorado, extra "queries" are searched too and the cheapest wins.
+        offers = _z2u_offers(body)
+        for q in rule.get("queries") or []:
+            alt = re.sub(r"([?&])q=[^&]*", r"\g<1>q=" + quote(q), url)
+            await page.goto(alt, wait_until="domcontentloaded", timeout=45000)
+            await _z2u_wait_list(page)
+            offers += _z2u_offers(await page.inner_text("body"))
+        best = cheapest_matching(offers, rule)
         return (best, "USD") if best else NA
     vals = [float(v.replace(",", "")) for pair in
             re.findall(r"\b1\s*=\s*USD\s*\$\s*([\d,]*\.?\d+)|Offers\s*From\s*\$\s*([\d,]*\.?\d+)", body)

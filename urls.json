@@ -11648,8 +11648,16 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/items-12781185/Growtopia-1X-Blue-Gem-Locks.html",
-              "note": ""
+              "url": "https://www.z2u.com/growtopia/items-3-8315?q=blue%20gem%20locks",
+              "note": "",
+              "match": {
+                "include": "blue\\s*gem\\s*locks?|\\bbgls?\\b",
+                "exclude": "aura|ances|pendant|mask|wing|diamond",
+                "queries": [
+                  "blue gem lock",
+                  "bgl"
+                ]
+              }
             },
             "iGVault": {
               "url": "https://www.igv.com/growtopia/items",
@@ -11678,8 +11686,15 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/items-9572061/Global-1X-Diamond-Lock.html",
-              "note": ""
+              "url": "https://www.z2u.com/growtopia/items-3-8315?q=diamond%20locks",
+              "note": "",
+              "match": {
+                "include": "diamond\\s*locks?|\\d\\s*dls?\\b|\\bdls?\\b",
+                "exclude": "dragon|dust|flashaxe|horn|necklace|blue\\s*gem|\\bbgls?\\b",
+                "queries": [
+                  "diamond lock"
+                ]
+              }
             },
             "iGVault": {
               "url": "https://www.igv.com/growtopia/items",
@@ -13493,6 +13508,19 @@
                 "count": "(\\d[\\d,]*)\\s*(k)?\\s*(?:sim|simulation)",
                 "per": 10000
               }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/blox-fruits/items-3-11634?q=simulation%20data",
+              "note": "",
+              "match": {
+                "include": "sim(ulation)?\\s*data",
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "count": "(\\d[\\d,]*)\\s*(k)?\\s*(?:sim|simulation)",
+                "per": 10000,
+                "queries": [
+                  "simulation"
+                ]
+              }
             }
           }
         },
@@ -13514,8 +13542,12 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/product-8147/Blox-Fruits-Portal.html",
-              "note": ""
+              "url": "https://www.z2u.com/blox-fruits/items-3-11634?q=portal",
+              "note": "",
+              "match": {
+                "include": "portal",
+                "exclude": "talon|claw|token|non[\\s-]*perm|physical|\\+\\s*(?:x\\s*)?\\d|bundle|&"
+              }
             },
             "PlayerAuctions": {
               "url": "https://www.playerauctions.com/blox-fruits-items/?SortField=cheapest-price&keyword=portal&sPid=0&PageIndex=1",
@@ -13546,8 +13578,12 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/product-248543/RBL-Blox-Fruits-Dragon.html",
-              "note": ""
+              "url": "https://www.z2u.com/blox-fruits/items-3-11634?q=dragon",
+              "note": "",
+              "match": {
+                "include": "dragon",
+                "exclude": "talon|claw|token|non[\\s-]*perm|physical|\\+\\s*(?:x\\s*)?\\d|bundle|&"
+              }
             },
             "PlayerAuctions": {
               "url": "https://www.playerauctions.com/blox-fruits-items/?SortField=cheapest-price&keyword=dragon&sPid=0&PageIndex=1",
@@ -13683,6 +13719,17 @@
                 "include": "superior\\s*lair",
                 "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
               }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/items-3-8685?q=superior%20lair%20key",
+              "note": "",
+              "match": {
+                "include": "superior\\s*lair",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|mortacrux|umbracrux|dagger",
+                "queries": [
+                  "lair key"
+                ]
+              }
             }
           }
         },
@@ -13717,6 +13764,17 @@
               "match": {
                 "include": "greater\\s*lair",
                 "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/items-3-8685?q=greater%20lair%20key",
+              "note": "",
+              "match": {
+                "include": "greater\\s*lair",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|mortacrux|umbracrux|dagger",
+                "queries": [
+                  "lair key"
+                ]
               }
             }
           }
@@ -13753,6 +13811,17 @@
                 "include": "lair\\s*keys?",
                 "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
               }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/items-3-8685?q=lair%20key",
+              "note": "",
+              "match": {
+                "include": "lair\\s*keys?",
+                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|mortacrux|umbracrux|dagger",
+                "queries": [
+                  "lair keys"
+                ]
+              }
             }
           }
         },
@@ -13787,6 +13856,17 @@
               "match": {
                 "include": "betrayer",
                 "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
+              }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/items-3-8685?q=husk",
+              "note": "",
+              "match": {
+                "include": "betrayer",
+                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|mortacrux|umbracrux|dagger",
+                "queries": [
+                  "betrayer"
+                ]
               }
             }
           }
@@ -13823,6 +13903,17 @@
                 "include": "crux",
                 "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill"
               }
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/diablo-4/items-3-8685?q=crux",
+              "note": "",
+              "match": {
+                "include": "crux",
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|mortacrux|umbracrux|dagger",
+                "queries": [
+                  "false prophet"
+                ]
+              }
             }
           }
         }
@@ -13857,8 +13948,17 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/product-867766/ARC-Raiders-Bobcat-IV.html",
-              "note": ""
+              "url": "https://www.z2u.com/arc-raiders/items-3-31350?q=Bobcat%20IV",
+              "note": "",
+              "match": {
+                "include": "bobcat\\s*(iv|4)\\b",
+                "exclude": "tempest|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Bobcat 4",
+                  "Bobcat"
+                ]
+              }
             },
             "PlayerAuctions": {
               "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=bobcat-iv&sPid=0&PageIndex=1",
@@ -13890,8 +13990,17 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/product-861161/ARC-Raiders-Tempest-IV.html",
-              "note": ""
+              "url": "https://www.z2u.com/arc-raiders/items-3-31350?q=Tempest%20IV",
+              "note": "",
+              "match": {
+                "include": "tempest\\s*(iv|4)\\b",
+                "exclude": "bobcat|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Tempest 4",
+                  "Tempest"
+                ]
+              }
             },
             "PlayerAuctions": {
               "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=tempest-iv&sPid=0&PageIndex=1",
@@ -13923,8 +14032,17 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/product-947109/ARC-Raiders-Herbal-Bandage.html",
-              "note": ""
+              "url": "https://www.z2u.com/arc-raiders/items-3-31350?q=Herbal%20Bandage",
+              "note": "",
+              "match": {
+                "include": "herbal\\s*bandage",
+                "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Herbal Bandages",
+                  "Bandage"
+                ]
+              }
             },
             "PlayerAuctions": {
               "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=herbal-bandage&sPid=0&PageIndex=1",
@@ -13955,8 +14073,16 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/product-861297/ARC-Raiders-Snap-Hook.html",
-              "note": ""
+              "url": "https://www.z2u.com/arc-raiders/items-3-31350?q=Snap%20Hook",
+              "note": "",
+              "match": {
+                "include": "snap\\s*hook",
+                "exclude": "blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Hook"
+                ]
+              }
             },
             "PlayerAuctions": {
               "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=snap-hook&sPid=0&PageIndex=1",
@@ -13988,8 +14114,17 @@
               }
             },
             "Z2U": {
-              "url": "https://www.z2u.com/product-871955/ARC-Raiders-Looting-Mk-3-Survivor.html",
-              "note": ""
+              "url": "https://www.z2u.com/arc-raiders/items-3-31350?q=Looting%20Mk.3",
+              "note": "",
+              "match": {
+                "include": "looting\\s*mk\\.?\\s*3[\\s\\S]*survivor|survivor[\\s\\S]*looting\\s*mk\\.?\\s*3",
+                "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Looting Mk3 Survivor",
+                  "Survivor"
+                ]
+              }
             },
             "PlayerAuctions": {
               "url": "https://www.playerauctions.com/arc-raiders-items/?SortField=cheapest-price&keyword=looting-mk-3&sPid=0&PageIndex=1",

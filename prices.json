@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T04:21:05.078819+00:00",
+  "generated": "2026-10-29T04:40:32.021755+00:00",
   "source": "scrape.py",
   "prices": {
     "PlayStation": {
@@ -4508,7 +4508,8 @@
         "G2G": 9.0,
         "Eldorado": 11.99,
         "PlayerAuctions": 33.67,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "Z2U": 11.2
       },
       "Blox Fruits (Portal Permanent)": {
         "G2G": 11.18,
@@ -4869,35 +4870,40 @@
         "Eldorado": 0.00035,
         "iGVault": 0.012,
         "G2A": "N/A",
-        "PlayerAuctions": "N/A"
+        "PlayerAuctions": "N/A",
+        "Z2U": "N/A"
       },
       "Greater Lair Key (Boss Materials)": {
         "G2G": 0.000233,
         "Eldorado": 0.000708,
         "iGVault": 0.00575,
         "G2A": "N/A",
-        "PlayerAuctions": "N/A"
+        "PlayerAuctions": "N/A",
+        "Z2U": 0.05
       },
       "Lair Key (Boss Materials)": {
         "G2G": 0.000297,
         "Eldorado": 0.01,
         "iGVault": 0.0023,
         "G2A": "N/A",
-        "PlayerAuctions": "N/A"
+        "PlayerAuctions": "N/A",
+        "Z2U": 0.05
       },
       "Betrayer's Husk (Boss Materials)": {
         "G2G": 0.0383,
         "Eldorado": 0.118,
         "iGVault": "N/A",
         "G2A": "N/A",
-        "PlayerAuctions": "N/A"
+        "PlayerAuctions": "N/A",
+        "Z2U": 0.08
       },
       "Crux of the False Prophet (Boss Materials)": {
         "G2G": 0.003589,
         "Eldorado": 0.009,
         "iGVault": 0.0575,
         "PlayerAuctions": 1.3e-05,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "Z2U": 2.0
       }
     },
     "Eudemons Online": {
@@ -4992,14 +4998,14 @@
       "Snap Hook (Quick Use)": {
         "G2G": 0.3608,
         "Eldorado": 0.62,
-        "Z2U": 0.52,
+        "Z2U": 0.55,
         "PlayerAuctions": 0.545,
         "G2A": "N/A"
       },
       "Looting Mk.3 (Survivor) (Augments)": {
         "G2G": 0.0898,
         "Eldorado": 0.13,
-        "Z2U": 0.37,
+        "Z2U": 0.6,
         "PlayerAuctions": 0.35,
         "G2A": "N/A"
       }
@@ -5084,7 +5090,7 @@
         "G2G": 0.0516,
         "PlayerAuctions": 0.1,
         "Eldorado": 0.0554,
-        "Z2U": 0.18,
+        "Z2U": 0.06,
         "iGVault": 0.0767,
         "G2A": "N/A"
       }
