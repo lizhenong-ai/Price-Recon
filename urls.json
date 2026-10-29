@@ -11669,8 +11669,13 @@
               "note": ""
             },
             "Eldorado": {
-              "url": "https://www.eldorado.gg/buy-growtopia-diamond-locks/g/99-0-0?growtopia-lock-type=diamond-lock&offerSortingCriterion=Cheapest",
-              "note": ""
+              "url": "https://www.eldorado.gg/growtopia-items/i/99-2-0?searchQuery=diamond%20locks&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "diamond\\W*locks?|\\d\\s*dls?\\b|\\bdls?\\b",
+                "exclude": "mask|wing|aura|blue\\s*gem|\\bbgls?\\b|chest|\\bgbc\\b|\\+\\s*(?:x\\s*)?\\d",
+                "count": "(\\d[\\d,]*)\\s*x?\\s*(?:diamond\\W*locks?|dls?)\\b|>\\s*(\\d[\\d,]*)\\s*locks|\\bx\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*locks"
+              }
             },
             "Z2U": {
               "url": "https://www.z2u.com/items-9572061/Global-1X-Diamond-Lock.html",
