@@ -258,6 +258,7 @@
     <button class="btn btn-secondary" id="undoBtn" onclick="undo()" title="Undo last change (⌘/Ctrl+Z)" disabled>↩ Undo</button>
     <button class="btn btn-danger" onclick="clearAllPrices()">🗑 Clear</button>
     <button class="btn btn-secondary" id="syncBtn" onclick="syncPricesJson(true)" title="Load the latest scraped prices.json">⟳ Sync Latest</button>
+    <button class="btn btn-secondary" onclick="resetToShared()" title="Forget this browser's saved edits and show exactly what is published on GitHub">↺ Match GitHub</button>
     <select id="datePicker" onchange="onDateChange(this.value)" title="View prices captured on a past date"
       style="padding:7px 10px;border-radius:6px;border:1px solid #30363d;background:#21262d;color:#c9d1d9;font-size:0.8rem;font-weight:600;cursor:pointer;">
       <option value="live">📅 Live (latest)</option>
@@ -2380,6 +2381,16 @@ function loadUrlOverrides() {
   try { ls = JSON.parse(localStorage.getItem('url_overrides_v1')); } catch (e) { ls = null; }
   if (ls && Object.keys(ls).length) urlOverrides = ls;
   else urlOverrides = (SHARED_STATE && SHARED_STATE.urlOverrides) ? JSON.parse(JSON.stringify(SHARED_STATE.urlOverrides)) : {};
+}
+// Drop every edit saved only in this browser (layout, renames, manual prices,
+// remarks) so the page shows exactly the published GitHub version.
+function resetToShared() {
+  if (!confirm('Forget this browser\'s saved edits and show exactly what is on GitHub?\n\nAnything you changed here but never published with "Publish layout" will be lost.')) return;
+  ['catalog_tree_v1', 'tab_order_v1', 'catalog_overrides_v1', 'url_overrides_v1',
+   'brand_remarks_v1', 'og_prices_v2', 'history_edits_v1'].forEach(k => {
+    try { localStorage.removeItem(k); } catch (e) {}
+  });
+  location.reload();
 }
 function saveUrlOverrides() { localStorage.setItem('url_overrides_v1', JSON.stringify(urlOverrides)); }
 // Publish the editor's layout/catalog so all viewers see it. Downloads
