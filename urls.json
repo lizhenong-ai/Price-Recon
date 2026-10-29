@@ -11661,7 +11661,15 @@
             },
             "iGVault": {
               "url": "https://www.igv.com/growtopia/items",
-              "note": ""
+              "note": "",
+              "match": {
+                "include": "blue\\s*gem\\s*locks?|\\bbgls?\\b",
+                "exclude": "aura|mask|wing|cape|=\\s*100\\s*diamond",
+                "queries": [
+                  "blue gem locks",
+                  "blue gem lock"
+                ]
+              }
             }
           }
         },
@@ -11698,7 +11706,15 @@
             },
             "iGVault": {
               "url": "https://www.igv.com/growtopia/items",
-              "note": ""
+              "note": "",
+              "match": {
+                "include": "diamond\\s*locks?|\\d\\s*dls?\\b|\\bdls?\\b",
+                "exclude": "blue\\s*gem|\\bbgls?\\b|dragon|dust|horn|necklace",
+                "queries": [
+                  "diamond locks",
+                  "diamond lock"
+                ]
+              }
             }
           }
         }
@@ -13397,7 +13413,11 @@
               "note": "",
               "match": {
                 "include": "dragon'?s?\\s*breath\\s*seed",
-                "exclude": "\\+|bundle|\\band\\b|&"
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "dragon breath seed",
+                  "dragon's breath seed"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13432,7 +13452,10 @@
               "note": "",
               "match": {
                 "include": "super\\s*watering\\s*can",
-                "exclude": "cider|syrup|\\+|bundle|\\band\\b|&"
+                "exclude": "sprinkler|cider|syrup|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "super watering can"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13467,7 +13490,11 @@
               "note": "",
               "match": {
                 "include": "star\\s*fruit\\s*seed",
-                "exclude": "\\+|bundle|\\band\\b|&"
+                "exclude": "\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&",
+                "queries": [
+                  "star fruit seed",
+                  "star fruit"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13556,6 +13583,18 @@
                 "include": "portal[\\s\\S]*\\bperm|\\bperm[\\s\\S]*portal",
                 "exclude": "non[\\s-]*perm|physical|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
               }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/blox-fruits/items",
+              "note": "",
+              "match": {
+                "include": "portal[\\s\\S]*\\bperm|\\bperm[\\s\\S]*portal",
+                "exclude": "non[\\s-]*perm|physical|divine|talon|claw|token|grow\\s*a\\s*garden|\\+\\s*(?:x\\s*)?\\d|bundle|&",
+                "queries": [
+                  "portal permanent",
+                  "portal"
+                ]
+              }
             }
           }
         },
@@ -13591,6 +13630,18 @@
               "match": {
                 "include": "dragon[\\s\\S]*\\bperm|\\bperm[\\s\\S]*dragon",
                 "exclude": "non[\\s-]*perm|physical|\\+\\s*(?:x\\s*)?\\d|bundle|\\band\\b|&"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/blox-fruits/items",
+              "note": "",
+              "match": {
+                "include": "dragon[\\s\\S]*\\bperm|\\bperm[\\s\\S]*dragon",
+                "exclude": "non[\\s-]*perm|physical|divine|talon|claw|token|grow\\s*a\\s*garden|\\+\\s*(?:x\\s*)?\\d|bundle|&",
+                "queries": [
+                  "dragon permanent",
+                  "dragon"
+                ]
               }
             }
           }
@@ -13709,7 +13760,10 @@
               "note": "",
               "match": {
                 "include": "superior\\s*lair",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|season\\s*1[0-4]\\b|mortacrux|umbracrux",
+                "queries": [
+                  "superior lair key"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13755,7 +13809,10 @@
               "note": "",
               "match": {
                 "include": "greater\\s*lair",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|season\\s*1[0-4]\\b|mortacrux|umbracrux",
+                "queries": [
+                  "greater lair key"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13801,7 +13858,10 @@
               "note": "",
               "match": {
                 "include": "lair\\s*keys?",
-                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "superior|greater|husk|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|season\\s*1[0-4]\\b|mortacrux|umbracrux",
+                "queries": [
+                  "lair key"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13847,7 +13907,11 @@
               "note": "",
               "match": {
                 "include": "betrayer",
-                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "superior|greater|lair\\s*key|eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|season\\s*1[0-4]\\b|mortacrux|umbracrux",
+                "queries": [
+                  "husk",
+                  "betrayer"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13893,7 +13957,10 @@
               "note": "",
               "match": {
                 "include": "crux",
-                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+|carry|boost|kill"
+                "exclude": "eternal|hardcore|\\bs1[0-4]\\b|\\+\\s*(?:x\\s*)?\\d|carry|boost|kill|season\\s*1[0-4]\\b|mortacrux|umbracrux",
+                "queries": [
+                  "crux"
+                ]
               }
             },
             "PlayerAuctions": {
@@ -13967,6 +14034,20 @@
                 "include": "bobcat\\s*(iv|4)\\b",
                 "exclude": "tempest|blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
               }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/arc-raiders/items",
+              "note": "",
+              "match": {
+                "include": "bobcat\\s*(iv|4)\\b",
+                "exclude": "tempest|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Bobcat IV",
+                  "Bobcat 4",
+                  "Bobcat"
+                ]
+              }
             }
           }
         },
@@ -14008,6 +14089,20 @@
               "match": {
                 "include": "tempest\\s*(iv|4)\\b",
                 "exclude": "bobcat|blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/arc-raiders/items",
+              "note": "",
+              "match": {
+                "include": "tempest\\s*(iv|4)\\b",
+                "exclude": "bobcat|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Tempest IV",
+                  "Tempest 4",
+                  "Tempest"
+                ]
               }
             }
           }
@@ -14051,6 +14146,20 @@
                 "include": "herbal\\s*bandage",
                 "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
               }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/arc-raiders/items",
+              "note": "",
+              "match": {
+                "include": "herbal\\s*bandage",
+                "exclude": "survivor|shield|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Herbal Bandage",
+                  "Herbal Bandages",
+                  "Bandage"
+                ]
+              }
             }
           }
         },
@@ -14090,6 +14199,19 @@
               "match": {
                 "include": "snap\\s*hook",
                 "exclude": "blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/arc-raiders/items",
+              "note": "",
+              "match": {
+                "include": "snap\\s*hook",
+                "exclude": "blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Snap Hook",
+                  "Hook"
+                ]
               }
             }
           }
@@ -14132,6 +14254,20 @@
               "match": {
                 "include": "looting\\s*mk\\.?\\s*3[\\s\\S]*survivor|survivor[\\s\\S]*looting\\s*mk\\.?\\s*3",
                 "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|&|modded|full\\s*weapon\\s*mods|material|\\bmats\\b|\\+\\s*(?:x\\s*)?\\d|\\bmag\\b|grip|silencer|compensator|with\\s*all|level\\s*i+\\s*attach|blue\\s*attach"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/arc-raiders/items",
+              "note": "",
+              "match": {
+                "include": "looting\\s*mk\\.?\\s*3[\\s\\S]*survivor|survivor[\\s\\S]*looting\\s*mk\\.?\\s*3",
+                "exclude": "safekeeper|cautious|blueprint|\\bbp\\b|bundle|\\+\\s*(?:x\\s*)?\\d|&|modded|full\\s*weapon\\s*mods",
+                "count": "\\b[x×*]\\s*(\\d[\\d,]*)\\b|(\\d[\\d,]*)\\s*[x×*](?![a-z0-9])|^\\s*(\\d[\\d,]*)\\s+(?=[a-z])",
+                "queries": [
+                  "Looting Mk.3",
+                  "Looting Mk3 Survivor",
+                  "Survivor"
+                ]
               }
             }
           }

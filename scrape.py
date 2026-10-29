@@ -1679,6 +1679,30 @@ async def adapter_eldorado(page, url, denom):
     return (min(vals), "USD") if vals else None
 
 
+def _igv_offers(body):
+    """[(title, usd, 1)] from an iGVault items page or search. Two layouts:
+    cards (title, "Server:"/"Category:"/"N Offers", "From", "$12.00") and offer
+    lists (title lines, "$", "55.00")."""
+    lines = [l.strip() for l in body.split("\n") if l.strip()]
+    offers, buf = [], []
+    for k in range(len(lines) - 1):
+        line, nxt = lines[k], lines[k + 1]
+        if line == "From" and re.match(r"^\$\s*[\d,]*\.?\d+$", nxt):
+            title = next((lines[j] for j in range(k - 1, max(k - 6, -1), -1)
+                          if not re.match(r"^(Item Type|Server|Category)\b|^\d+ Offers?$", lines[j])), "")
+            offers.append((title, float(nxt.lstrip("$ ").replace(",", "")), 1))
+            buf = []
+        elif line == "$" and re.match(r"^[\d,]*\.?\d+$", nxt):
+            if buf:
+                offers.append((" | ".join(buf[-4:]), float(nxt.replace(",", "")), 1))
+            buf = []
+        elif re.match(r"^(Keywords:|Best Match$|Price$)", line):
+            buf = []                       # search header, not part of an offer
+        elif not line.startswith("$") and not re.match(r"^[\d,]*\.\d+$", line):
+            buf.append(line)
+    return offers
+
+
 async def adapter_igv(page, url, denom):
     target = None if denom.get("match") else lock_target(denom.get("pname"))
     path = urlparse(url).path.rstrip("/")
@@ -1701,14 +1725,15 @@ async def adapter_igv(page, url, denom):
             return (best, "USD")
     rule = denom.get("match")
     if rule and path.endswith("/items"):
-        lines = [l.strip() for l in (await page.inner_text("body")).split("\n") if l.strip()]
-        offers = []
-        for k in range(1, len(lines) - 1):
-            if lines[k] == "From" and re.match(r"^\$\s*[\d,]*\.?\d+$", lines[k + 1]):
-                # card: title, "Item Type:" / "Server:" / "Category:" / "N Offers", "From", "$12.00"
-                title = next((lines[j] for j in range(k - 1, max(k - 6, -1), -1)
-                              if not re.match(r"^(Item Type|Server|Category)\b|^\d+ Offers?$", lines[j])), "")
-                offers.append((title, float(lines[k + 1].lstrip("$ ").replace(",", "")), 1))
+        # Searches ("?keywords=") show different listings than the plain items
+        # page, so a rule's extra "queries" are searched too; cheapest wins.
+        offers = _igv_offers(await page.inner_text("body"))
+        base = re.sub(r"[?&]keywords=[^&]*", "", url)
+        for q in rule.get("queries") or []:
+            await page.goto(base + ("&" if "?" in base else "?") + "keywords=" + quote_plus(q),
+                            wait_until="domcontentloaded", timeout=45000)
+            await page.wait_for_timeout(4000)
+            offers += _igv_offers(await page.inner_text("body"))
         best = cheapest_matching(offers, rule)
         return (best, "USD") if best else NA
     # Product page with a seller list ("$0.099/Unit").

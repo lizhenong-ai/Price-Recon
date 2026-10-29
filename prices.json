@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T04:40:32.021755+00:00",
+  "generated": "2026-10-29T05:00:47.557167+00:00",
   "source": "scrape.py",
   "prices": {
     "PlayStation": {
@@ -4493,14 +4493,14 @@
       "Grow a Garden 2 (Super Watering Can)": {
         "G2G": 0.000562,
         "Eldorado": 0.001,
-        "iGVault": "N/A",
+        "iGVault": 0.1267,
         "PlayerAuctions": "N/A",
         "G2A": "N/A"
       },
       "Grow a Garden 2 (Star Fruit Seed)": {
         "G2G": 0.0393,
         "Eldorado": 0.06,
-        "iGVault": "N/A",
+        "iGVault": 3.12,
         "PlayerAuctions": "N/A",
         "G2A": "N/A"
       },
@@ -4516,14 +4516,16 @@
         "Eldorado": 11.77,
         "Z2U": 12.0,
         "PlayerAuctions": 24.21,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "iGVault": 32.29
       },
       "Blox Fruits (Dragon Permanent)": {
         "G2G": 28.09,
         "Eldorado": 31.99,
         "Z2U": 29.99,
         "PlayerAuctions": 55.12,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "iGVault": 44.99
       },
       "Anime Expeditions (Premium Pass)": {
         "G2G": 5.81,
@@ -4868,7 +4870,7 @@
       "Superior Lair Key (Boss Materials)": {
         "G2G": 0.000227,
         "Eldorado": 0.00035,
-        "iGVault": 0.012,
+        "iGVault": 0.0015,
         "G2A": "N/A",
         "PlayerAuctions": "N/A",
         "Z2U": "N/A"
@@ -4876,7 +4878,7 @@
       "Greater Lair Key (Boss Materials)": {
         "G2G": 0.000233,
         "Eldorado": 0.000708,
-        "iGVault": 0.00575,
+        "iGVault": 0.00325,
         "G2A": "N/A",
         "PlayerAuctions": "N/A",
         "Z2U": 0.05
@@ -4892,7 +4894,7 @@
       "Betrayer's Husk (Boss Materials)": {
         "G2G": 0.0383,
         "Eldorado": 0.118,
-        "iGVault": "N/A",
+        "iGVault": 0.5,
         "G2A": "N/A",
         "PlayerAuctions": "N/A",
         "Z2U": 0.08
@@ -4979,35 +4981,40 @@
         "Eldorado": 1.2,
         "Z2U": 0.6,
         "PlayerAuctions": 0.99,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "iGVault": 1.19
       },
       "Tempest IV (Weapons)": {
         "G2G": 0.62,
         "Eldorado": 0.98,
         "Z2U": 1.0,
         "PlayerAuctions": 0.99,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "iGVault": 1.19
       },
       "Herbal Bandage (Quick Use)": {
         "G2G": 0.0157,
         "Eldorado": 0.0299,
         "Z2U": "N/A",
         "PlayerAuctions": 0.04,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "iGVault": 0.049
       },
       "Snap Hook (Quick Use)": {
         "G2G": 0.3608,
         "Eldorado": 0.62,
         "Z2U": 0.55,
         "PlayerAuctions": 0.545,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "iGVault": 1.0
       },
       "Looting Mk.3 (Survivor) (Augments)": {
         "G2G": 0.0898,
         "Eldorado": 0.13,
         "Z2U": 0.6,
         "PlayerAuctions": 0.35,
-        "G2A": "N/A"
+        "G2A": "N/A",
+        "iGVault": 0.249
       }
     },
     "U Mobile": {
@@ -5083,7 +5090,7 @@
         "PlayerAuctions": 5.03,
         "Eldorado": 4.0,
         "Z2U": 9.9,
-        "iGVault": 8.8,
+        "iGVault": 6.27,
         "G2A": "N/A"
       },
       "Diamond Locks": {
