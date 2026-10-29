@@ -11639,8 +11639,13 @@
               "note": ""
             },
             "Eldorado": {
-              "url": "https://www.eldorado.gg/buy-growtopia-diamond-locks/g/99-0-0?growtopia-lock-type=blue-gem-lock&offerSortingCriterion=Cheapest",
-              "note": ""
+              "url": "https://www.eldorado.gg/growtopia-items/i/99-2-0?searchQuery=blue%20gem%20locks&offerSortingCriterion=Cheapest",
+              "note": "",
+              "match": {
+                "include": "blue\\s*gem\\s*locks?|\\bbgls?\\b",
+                "exclude": "mask|wing|aura|\\bworld\\b|\\+\\s*(?:x\\s*)?\\d|\\bdl\\b|diamond",
+                "count": "(\\d[\\d,]*)\\s*x?\\s*(?:blue\\s*gem\\s*locks?|bgls?)\\b|\\bx\\s*(\\d[\\d,]*)\\b"
+              }
             },
             "Z2U": {
               "url": "https://www.z2u.com/items-12781185/Growtopia-1X-Blue-Gem-Locks.html",
