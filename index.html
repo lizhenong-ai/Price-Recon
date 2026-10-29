@@ -2126,6 +2126,14 @@ function loadCatalogOverrides() {
   try { ls = JSON.parse(localStorage.getItem('catalog_overrides_v1')); } catch (e) { ls = null; }
   if (ls && Object.keys(ls).length) catalogOverrides = ls;
   else catalogOverrides = (SHARED_STATE && SHARED_STATE.overrides) ? JSON.parse(JSON.stringify(SHARED_STATE.overrides)) : {};
+  // Tabs removed for everyone (shared _deletedCategories) must also disappear
+  // from browsers that saved their own overrides, including ones they added.
+  const sharedDel = ((SHARED_STATE && SHARED_STATE.overrides) || {})._deletedCategories || [];
+  if (sharedDel.length) {
+    const del = catalogOverrides._deletedCategories = catalogOverrides._deletedCategories || [];
+    sharedDel.forEach(c => { if (del.indexOf(c) === -1) del.push(c); });
+    catalogOverrides._addedCategories = (catalogOverrides._addedCategories || []).filter(c => sharedDel.indexOf(c) === -1);
+  }
 }
 function saveCatalogOverrides() {
   localStorage.setItem('catalog_overrides_v1', JSON.stringify(catalogOverrides));
