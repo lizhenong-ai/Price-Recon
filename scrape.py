@@ -1611,6 +1611,13 @@ async def adapter_playerauctions(page, url, denom):
                     each /= n
             per_item.append((text, each, 1))
         best = cheapest_matching(per_item, dict(rule, count=r"(?!)"))
+        if best:
+            # Keep the winning listing so odd prices can be traced in scrape_report.json.
+            pick = next((t for t, e, _ in per_item
+                         if abs(e * float(rule.get("per") or 1) - best) <= 1e-12 and
+                         cheapest_matching([(t, e, 1)], dict(rule, count=r"(?!)"))), "")
+            DIAGNOSTICS.append({"site": "PlayerAuctions", "product": denom.get("pname"),
+                                "picked": best, "row": re.sub(r"\s+", " ", pick)[:300]})
     else:
         best = cheapest_per_lock(offers, target)
     if not best:
@@ -2734,7 +2741,7 @@ def main():
 
     report["elapsed_sec"] = round(time.time() - t0, 1)
     report["errors"] = report["errors"][:50]
-    report["diagnostics"] = DIAGNOSTICS[:40]
+    report["diagnostics"] = DIAGNOSTICS[:80]
     REPORT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 
     if ARGS.debug:
