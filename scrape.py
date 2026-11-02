@@ -1757,9 +1757,13 @@ async def adapter_igv(page, url, denom):
             offers += _igv_offers(await page.inner_text("body"))
         best = cheapest_matching(offers, rule)
         return (best, "USD") if best else NA
-    # Product page with a seller list ("$0.099/Unit").
+    # Product or currency page with a seller list ("$0.099/Unit", "$0.08/K");
+    # "unit" in a match rule is the G2G unit in base units (1000 for "K Mesos").
     body = await page.inner_text("body")
-    vals = [float(v.replace(",", "")) for v in re.findall(r"\$\s*([\d,]*\.?\d+)\s*/\s*Unit", body)]
+    mult = {"unit": 1, "k": 1e3, "m": 1e6, "b": 1e9}
+    per = float((rule or {}).get("unit") or 1)
+    vals = [float(v.replace(",", "")) / mult[u.lower()] * per
+            for v, u in re.findall(r"\$\s*([\d,]*\.?\d+)\s*/\s*(Unit|K|M|B)\b", body, re.I)]
     if vals:
         return (min(vals), "USD")
     return await generic_extract(page, url, denom)

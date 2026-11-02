@@ -15383,6 +15383,41 @@
           }
         }
       ]
+    },
+    "MapleStory Classic World Mesos": {
+      "competitors": [
+        "G2G",
+        "PlayerAuctions",
+        "Eldorado",
+        "Z2U",
+        "iGVault"
+      ],
+      "products": [
+        {
+          "name": "Windia [US]",
+          "urls": {
+            "G2G": {
+              "url": "https://www.g2g.com/categories/maplestory-classic-world-mesos/offer/group?fa=lgc_39943_dropdown_16%3Algc_39943_dropdown_16_63491&sort=lowest_price",
+              "note": ""
+            },
+            "Z2U": {
+              "url": "https://www.z2u.com/maplestory-classic-world/Gold-1-37778",
+              "note": "",
+              "match": {
+                "include": "windia",
+                "count": "(?!)"
+              }
+            },
+            "iGVault": {
+              "url": "https://www.igv.com/maplestory-classic-world/mesos?maplestory+classic+world+sever=global-windia&sortby=price:+low+to+high",
+              "note": "",
+              "match": {
+                "unit": 1000
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }
