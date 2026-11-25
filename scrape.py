@@ -50,6 +50,7 @@ ROOT = Path(__file__).resolve().parent
 URLS_FILE = ROOT / "urls.json"
 CUSTOM_FILE = ROOT / "custom_products.json"   # user-added products (dashboard export)
 BRAND_URLS_FILE = ROOT / "brand_urls.json"    # one product-page URL per brand+competitor
+BRAND_LEVEL_URLS = set()   # [24 Nov] URLs shared by a whole brand (their pinned offer is not "our" card)
 OUT_FILE = ROOT / "prices.json"
 HISTORY_FILE = ROOT / "price_history.json"   # daily snapshots for the date picker
 HISTORY_DAYS = 180                           # keep ~6 months of daily snapshots
@@ -155,7 +156,7 @@ def parse_denomination(name):
         except ValueError:
             amount = None
     return {"amount": amount, "currency": cur, "region": region,
-            "nums": denom_numbers(name), "words": denom_words(name)}
+            "nums": denom_numbers(name), "words": denom_words(name), "name": name}
 
 
 # Generic filler / unit words that don't help identify a specific product card.
@@ -260,7 +261,8 @@ def parse_price_currency(text):
     s = (text or "").strip()
     if not s:
         return None
-    if re.search(r"\bRM|\bMYR", s, re.I):       # RM470 or RM 470 or MYR
+    # [24 Nov] also "FromRM98.98" (Joytify/LapakGaming glue "From" to the price; \bRM missed it -> read as USD)
+    if re.search(r"\bRM|RM\s?\d", s) or re.search(r"\bRM|\bMYR", s, re.I):       # RM470 or RM 470 or MYR
         cur = "MYR"
     elif re.search(r"S\$|\bSGD", s, re.I):
         cur = "SGD"
@@ -295,6 +297,11 @@ _MATCH_JS = r"""
     return null;
   }
   const numRes = (nums || []).map(n => new RegExp('(?<![\\d.])' + n + '(?![\\d.])'));
+  // [24 Nov] Products with no number ("Express Supply Pass", "Lunite Subscription"): brand words that are
+  // in the page title ("Honkai Star Rail") also match the page header, which sits next to the cheapest
+  // card. Require the DISTINCTIVE words (the ones not in the title) instead.
+  const _title = (document.title || '').toLowerCase();
+  const dws = numRes.length ? [] : ws.filter(w => !_title.includes(w));
   const GATE = /USD|EUR|GBP|JPY|CNY|CAD|MYR|RM|SGD|QAR|AUD|USDT|USDC|Diamond|Crystal|Genesis|Point|Coin|Gold|Credit|Shard|Lunite|Gem|Rbx|Roblox|Robux|Oneiric|Monochrome|Bonus|Welkin|Pass|Nitro|Premium|Wallet|Day|Days|Month|Months|Year|Years|Gift|Card|Voucher|Subscription|GASH|GoCash|Cash|NCoin|NCSOFT|Flexepin|Binance|Crypto|Steam|Apple|iTunes|Honkai|Pin|Yen/i;
   // Find the denomination LABEL: the small element scoring highest on target
   // numbers (weighted heavily) plus target name-words (the tie-breaker / the
@@ -318,6 +325,7 @@ _MATCH_JS = r"""
     }
     let numScore = _hit.size, maxNum = -1; for (const n of _hit) if (n > maxNum) maxNum = n;
     let wordScore = 0; for (const w of ws) if (tl.includes(w)) wordScore++;
+    if (dws.length && !dws.every(w => tl.includes(w))) continue;
     const score = numScore * 10 + wordScore;
     if (score === 0) continue;
     // numbered denomination -> require a real number match; never match on words
@@ -476,6 +484,9 @@ async def adapter_seagm(page, url, denom):
 _ENEBA_JS = r"""
 (args) => {
   const {nums, cur} = args;
+  // [24 Nov] no-number products: match the card by its distinctive words (not in the page title)
+  const _title = (document.title || '').toLowerCase();
+  const dws = (nums && nums.length) ? [] : (args.words || []).map(w => String(w).toLowerCase()).filter(w => !_title.includes(w));
   // Eneba product pages list EVERY denomination as a grid card titled by its
   // face value (e.g. "20 USD", "200 QAR", "500 CAD") with the buyer price shown
   // in $ underneath (e.g. "$19.65") plus a "1.02 USD per $1" ratio. Match the
@@ -510,18 +521,27 @@ _ENEBA_JS = r"""
   for (const el of document.querySelectorAll('div,span,li,a,p,button,label,h1,h2,h3,h4')) {
     const t = (el.textContent || '').replace(/,/g, '');
     if (t.length > 40) continue;                 // card titles are short
+    // [24 Nov] an element that is ONLY the ratio ("1.09 USD per $1") is not a card title
+    if (/^\s*[\d.]+\s*[A-Za-z]{2,12}\s*per\s*(?:US)?\$\s*[\d.]+\s*$/i.test(t)) continue;
     // Match a direct number AND base+bonus pairs whose SUM equals a tracked total
     // (Eneba labels MLBB cards "7740 + 1548 Diamonds" for a tracked 9288 total).
     const hit = new Set();
     for (let i = 0; i < numRes.length; i++) if (numRes[i].test(t)) hit.add(nums[i]);
     {
-      const cn = (t.replace(/\$\s?\d[\d.]*/g, ' ').match(/\d+/g) || [])
-                   .map(Number).filter(x => x > 0);
+      // [24 Nov] whole numbers only: "1.09" was split into 1 + 9 = 10
+      const cn = (t.replace(/\$\s?\d[\d.]*/g, ' ').match(/\d+(?:\.\d+)?/g) || [])
+                   .map(Number).filter(x => x > 0 && Number.isInteger(x));
       for (let a = 0; a < cn.length; a++) for (let b = a + 1; b < cn.length; b++)
         if ((nums || []).indexOf(cn[a] + cn[b]) !== -1) hit.add(cn[a] + cn[b]);
     }
     let s = hit.size;
     if (numRes.length && s === 0) continue;
+    if (!numRes.length) {                        // [24 Nov] words-only product
+      if (!dws.length) continue;
+      const tl = t.toLowerCase();
+      if (!dws.every(w => tl.includes(w))) continue;
+      s = 1;
+    }
     const hasCur = curRe ? curRe.test(t) : false;
     if (hasCur) s += 1;                          // currency match is a strong signal
     labels.push({ el, score: s, len: t.length, hasCur });
@@ -554,7 +574,17 @@ _ENEBA_JS = r"""
       if (txt.length < 160) {
         // Drop the "0.71 GBP per $1" exchange-ratio reference so its "$1" isn't
         // mistaken for a $1 buyer price when we take the minimum.
-        const clean = txt.replace(/per\s*\$\s*\d[\d.]*/gi, ' ');
+        // [24 Nov] also "per US$1" (US-region pages write US$) -- it was read as a $1 price.
+        const clean = txt.replace(/per\s*(?:US)?\$\s*\d[\d.]*/gi, ' ');
+        // For the face-value check below: remove the $ prices first, then the ratio ("1.04 USD per").
+        const faceTxt = txt.replace(/(?:US)?\$\s?\d[\d,]*(?:\.\d{1,2})?/g, ' ')
+                           .replace(/\d[\d.,]*\s*[A-Z]{3}\s*per\b/g, ' ');
+        // [24 Nov] A box that also shows ANOTHER denomination's face value ("2500 JPY ... 12000 JPY
+        // Sold out") is the whole grid, not our card: its lowest $ belongs to a different card.
+        const otherFace = [...faceTxt.matchAll(/(\d[\d.,]*)\s*([A-Z]{3})(?![A-Za-z])/g)]
+          .some(m => (nums || []).indexOf(parseFloat(m[1].replace(/,/g, ''))) === -1
+                     && (!cur || m[2].toUpperCase() === String(cur).toUpperCase()));
+        if (otherFace) { if (soldRe.test(txt) && /sold\s*out/i.test(el.textContent || '')) sold = true; break; }
         const vals = [...clean.matchAll(priceRe)]
           .map(m => parseFloat(m[1].replace(/,/g, ''))).filter(v => !isNaN(v) && v > 0);
         if (vals.length) { const lo = Math.min(...vals); if (best === null || lo < best) best = lo; break; }
@@ -565,6 +595,24 @@ _ENEBA_JS = r"""
   }
   if (best !== null) return { price: best };
   if (sold) return { soldout: true };
+  // [24 Nov] Single-product page (no card for our size in any grid): if the page's own title IS our
+  // denomination ("PlayStation Network Card 100 USD (USA)"), read its "From: $100.00 -4% $95.60" box --
+  // the last $ is the price after discount.
+  {
+    const h1 = (document.querySelector('h1') || {}).textContent || '';
+    const h = h1.replace(/,/g, '');
+    if (numRes.length && numRes.some(r => r.test(h)) && (!curRe || curRe.test(h))) {
+      let fp = null;
+      for (const el of document.querySelectorAll('div,span,p')) {
+        const t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+        if (t.length > 130 || !/^From:/i.test(t)) continue;
+        const head = t.split(/Price is not final/i)[0];      // "From:$100.00-4%$95.60"
+        const ps = [...head.matchAll(/\$\s?(\d[\d,]*(?:\.\d{1,2})?)/g)].map(m => parseFloat(m[1].replace(/,/g, '')));
+        if (ps.length && (!fp || ps.length > fp.length)) fp = ps;
+      }
+      if (fp) return { price: fp[fp.length - 1] };
+    }
+  }
   if (hasGrid) return { gridNoMatch: true };   // grid page, denomination absent -> N/A
   return null;
 }
@@ -578,7 +626,8 @@ async def adapter_eneba(page, url, denom):
     # "100 USD" (=100) and reports it as a price.
     try:
         res = await page.evaluate(_ENEBA_JS, {"nums": denom.get("nums") or [],
-                                              "cur": denom.get("currency")})
+                                              "cur": denom.get("currency"),
+                                              "words": denom.get("words") or []})
     except Exception:
         res = None
     if getattr(ARGS, "debug", False):
@@ -643,7 +692,12 @@ async def adapter_moogold(page, url, denom):
     raw = None
     try:
         raw = await page.evaluate(
-            r"""(nums) => {
+            r"""(args) => {
+              const nums = args.nums, words = (args.words || []).map(w => String(w).toLowerCase());
+              // [24 Nov] unit words decide between variations sharing a number ("Nitro 1 Month" vs
+              // "Nitro 1 Year"); without this the first variation won.
+              const UNIT = /\b(day|week|month|year)s?\b/i;
+              const wantUnit = ((args.name || '').match(UNIT) || [])[1];
               const form = document.querySelector('form.variations_form, [data-product_variations]');
               if (!form) return null;
               let arr;
@@ -661,7 +715,13 @@ async def adapter_moogold(page, url, denom):
                 const cn = (at.match(/\d+/g) || []).map(Number).filter(x => x > 0);
                 for (let a = 0; a < cn.length; a++) for (let b = a + 1; b < cn.length; b++)
                   if ((nums || []).indexOf(cn[a] + cn[b]) !== -1) hit.add(cn[a] + cn[b]);
-                const sc = hit.size;
+                let sc = hit.size;
+                const gotUnit = (at.match(UNIT) || [])[1];
+                if (wantUnit && gotUnit && wantUnit.toLowerCase() !== gotUnit.toLowerCase()) continue;
+                if (sc > 0) { const al = at.toLowerCase(); for (const w of words) if (al.includes(w)) sc += 0.1;
+                  // a cut-down tier ("Nitro Basic", "Classic", "Trial") is a different product unless named
+                  const tier = (al.match(/\b(basic|classic|lite|trial)\b/) || [])[1];
+                  if (tier && !(args.name || '').toLowerCase().includes(tier)) sc -= 0.5; }
                 if (sc > bestScore) { bestScore = sc; best = v; }
               }
               // if no number matched at all and there are several variations, bail
@@ -674,9 +734,9 @@ async def adapter_moogold(page, url, denom):
               else if (/€|EUR/i.test(s)) cur = 'EUR';
               else if (/£|GBP/i.test(s)) cur = 'GBP';
               else if (/S\$|SGD/i.test(s)) cur = 'SGD';
-              return cur + ' ' + best.display_price;
+              return (cur === 'MYR' ? 'RM' : cur + ' ') + best.display_price;   // "MYR 1.0" didn't parse
             }""",
-            nums,
+            {"nums": nums, "words": denom.get("words") or [], "name": denom.get("name") or ""},
         )
     except Exception:
         raw = None
@@ -763,8 +823,13 @@ _MATCH_CARD_JS = r"""
   const ws = (words || []).map(w => String(w).toLowerCase());
   if ((!nums || !nums.length) && !ws.length) return null;
   const numRes = (nums || []).map(n => new RegExp('(?<![\\d.])' + n + '(?![\\d.])'));
+  // [24 Nov] Products with no number ("Express Supply Pass", "Lunite Subscription"): brand words that are
+  // in the page title ("Honkai Star Rail") also match the page header, which sits next to the cheapest
+  // card. Require the DISTINCTIVE words (the ones not in the title) instead.
+  const _title = (document.title || '').toLowerCase();
+  const dws = numRes.length ? [] : ws.filter(w => !_title.includes(w));
   const GATE = /USD|EUR|GBP|JPY|CNY|CAD|MYR|RM|SGD|QAR|AUD|USDT|USDC|Diamond|Crystal|Genesis|Point|Coin|Gold|Credit|Shard|Lunite|Gem|Rbx|Roblox|Robux|Oneiric|Monochrome|Bonus|Welkin|Pass|Nitro|Premium|Wallet|Day|Days|Month|Months|Year|Years|Gift|Card|Voucher|Subscription|GASH|GoCash|Cash|NCoin|NCSOFT|Flexepin|Binance|Crypto|Steam|Apple|iTunes|Honkai|Pin|Yen/i;
-  let label = null, bestScore = 0, bestLen = 1e9, bestNum = -1;
+  let bestScore = 0, bestNum = -1; const cands = [];
   for (const el of document.querySelectorAll('div,span,li,a,p,button,label,td,h1,h2,h3,h4')) {
     const t = (el.textContent || '').replace(/,/g, '');
     if (t.length > 90) continue;
@@ -782,23 +847,50 @@ _MATCH_CARD_JS = r"""
     }
     let numScore = _hit.size, maxNum = -1; for (const n of _hit) if (n > maxNum) maxNum = n;
     let wordScore = 0; for (const w of ws) if (tl.includes(w)) wordScore++;
-    const score = numScore * 10 + wordScore;
+    if (dws.length && !dws.every(w => tl.includes(w))) continue;
+    // [24 Nov] a number written WITH a currency ("RM200", "200 USD") is the card's face value; a bare one
+    // ("PlayStation RM250 + 200" bonus) is not -- prefer the former.
+    const curAdj = (nums || []).some(n => new RegExp('(?:US\\$|USD|RM|MYR|S\\$|SGD|€|£|\\$|EUR|GBP|AUD|CAD|JPY|CNY)\\s?' + n + '(?![\\d.])|(?<![\\d.])' + n + '\\s?(?:USD|EUR|MYR|SGD|RM|GBP|AUD|CAD|JPY|CNY)', 'i').test(t));
+    const score = numScore * 10 + wordScore + (curAdj ? 5 : 0);
     if (score === 0) continue;
     // numbered denomination -> require a real number match; never match on words
     // alone, which would grab an unrelated card when our size isn't offered.
     if (numRes.length && numScore === 0) continue;
     if (!GATE.test(t) && wordScore === 0) continue;
-    if (score > bestScore || (score === bestScore && maxNum > bestNum) ||
-        (score === bestScore && maxNum === bestNum && t.length < bestLen)) {
-      label = el; bestScore = score; bestLen = t.length; bestNum = maxNum;
+    if (score > bestScore || (score === bestScore && maxNum > bestNum)) {
+      cands.length = 0; bestScore = score; bestNum = maxNum;
+    }
+    if (score === bestScore && maxNum === bestNum) cands.push(el);
+  }
+  if (!cands.length) return null;
+  // [24 Nov] The face value itself ("PlayStation Card RM100") is not a price: strip it before testing.
+  const faceRes = (nums || []).map(n => new RegExp('(?<![\\d.])(?:US\\$|USD|RM|MYR|S\\$|SGD|€|£|\\$)?\\s?' + n +
+                                                   '(?![\\d.,])\\s?(?:USD|EUR|MYR|SGD|RM)?', 'gi'));
+  const stripFace = x => faceRes.reduce((acc, r) => acc.replace(r, ' '), x || '');
+  const symRe = /(US\$|RM|S\$|€|£|\$)\s?\d[\d.,]*/;
+  // [24 Nov] Several elements can carry the same label (a tab button "Express Supply Pass" AND the card's
+  // title). Take the one whose OWN price is nearest (fewest steps up), then the shortest; climbing far from
+  // a tab button reaches the whole grid and its first (cheapest) card.
+  let best = null;
+  for (const el of cands) {
+    const own = el.textContent || '';
+    let node = el;
+    for (let i = 0; i < 7 && node; i++) {
+      // Only a SYMBOL price ("$55.5", "RM98.98") counts: "Steam Gift Card 25 USD x 2" next to the
+      // 50 USD card is a bundle label, not its price. The face value is stripped from the label itself
+      // only -- on the card, "From$5" for a USD 5 card is the real price.
+      const rest = i === 0 ? stripFace(own) : (node.textContent || '').replace(own, ' ');
+      const m = symRe.exec(rest);
+      if (m) {
+        if (!best || i < best.depth || (i === best.depth && own.length < best.len))
+          best = {depth: i, len: own.length, text: m[0].trim()};
+        break;
+      }
+      node = node.parentElement;
     }
   }
-  if (!label) return null;
-  let node = label;
-  for (let i = 0; i < 7 && node; i++) {
-    if (priceRe.test(node.textContent || '')) return {text: node.textContent.trim(), hasPrice: true};
-    node = node.parentElement;
-  }
+  if (best) return {text: best.text, hasPrice: true};
+  let label = cands.sort((a, b) => (a.textContent || '').length - (b.textContent || '').length)[0];
   // Matched the denomination card but found no price on it -> return its text
   // anyway so the caller can tell "out of stock" apart from "no match".
   return {text: label.textContent.trim(), hasPrice: false};
@@ -1097,8 +1189,12 @@ import ssl as _ssl
 # brand names, so catalog abbreviations (RBL/WOW/DC/Sptfy) match the site's full
 # names. A signature = currency code (if any) + unit word (if any) + the set of
 # numbers. Longer currency codes first so USDT/USDC win over USD.
+# [24 Nov] lookarounds instead of \b so "EUR10" / "RM10" are read too, and more currencies (AED, INR...):
+# a card whose currency wasn't recognised used to match on its number alone ("GBP 50" -> "AED 50").
 _OG_CUR_RE = re.compile(
-    r"\b(USDT|USDC|USD|EUR|GBP|JPY|MYR|SGD|AUD|CAD|CNY|TRY|BRL|IDR|PHP|HKD|TWD|KRW|THB|VND)\b", re.I)
+    r"(?<![A-Za-z])(USDT|USDC|USD|EUR|GBP|JPY|MYR|RM|SGD|AUD|CAD|CNY|TRY|BRL|IDR|PHP|HKD|TWD|KRW|THB|VND|"
+    r"AED|INR|NZD|SAR|QAR|KWD|BHD|OMR|EGP|ZAR|MXN|PLN|CHF|SEK|NOK|DKK|CZK|HUF|RON|ARS|CLP|COP|PEN|NGN|"
+    r"PKR|BDT|LKR|KZT|UAH|RUB|ILS)(?![A-Za-z])", re.I)
 _OG_UNIT_RE = re.compile(
     r"\b(day|month|year|diamond|crystal|coin|point|credit|gem|robux|rbx|lunite|genesis|uc|cp)s?\b", re.I)
 
@@ -1114,7 +1210,10 @@ def _og_sig(text):
             nums.add(float(x))
         except ValueError:
             pass
-    return {"cur": cm.group(1).upper() if cm else None,
+    cur = cm.group(1).upper() if cm else None
+    if cur == "RM":
+        cur = "MYR"
+    return {"cur": cur,
             "unit": um.group(1).lower() if um else None,
             "nums": nums}
 
@@ -1126,6 +1225,9 @@ def _og_match(want, got):
     if want["cur"] and got["cur"]:
         # currency cards (e.g. USDT 50): same currency + the amount appears
         return want["cur"] == got["cur"] and bool(want["nums"] & got["nums"])
+    if want["cur"] and not got["cur"]:
+        # [24 Nov] we want a currency card but this title names none -> can't confirm it's ours
+        return False
     # otherwise (subscriptions, time/game cards): same numbers + matching unit
     if want["nums"] != got["nums"]:
         return False
@@ -1230,10 +1332,12 @@ def fetch_og_price_sync(catalog_url, pname=""):
             p = (info or {}).get("payload") or {}
             sid, bid = p.get("service_id"), p.get("brand_id")
             if sid and bid:
-                data = _og_get_json(
-                    "https://sls.offgamers.com/offer/search/lite?"
-                    + _uparse.urlencode({"service_id": sid, "brand_id": bid,
-                                         "country": "US", "currency": "USD"}))
+                # [24 Nov] pass the link's region_id: without it search/lite returns another region
+                # (PSN UK/US/MY links whose offer_id had expired all landed on the UAE card list).
+                _rq = {"service_id": sid, "brand_id": bid, "country": "US", "currency": "USD"}
+                if q.get("region_id"):
+                    _rq["region_id"] = q["region_id"][0]
+                data = _og_get_json("https://sls.offgamers.com/offer/search/lite?" + _uparse.urlencode(_rq))
                 cat_id = _og_find_cat_id(data)
 
     # 3. getProductList -> discounted raw_final_price per denomination.
@@ -1261,6 +1365,13 @@ def fetch_og_price_sync(catalog_url, pname=""):
         return (round(min(allprices), 4), "USD")
 
     # Last resort: the offer endpoint's own price (this is the SRP, no discount).
+    # [24 Nov] A brand-level link (brand_urls.json, shared by every denomination) pinned to "EUR 20" was
+    # reporting EUR 20's price for Riot Points EUR 50 / EUR 100 / TRY 4,785. For those, only use the pinned
+    # offer when it IS our denomination. A product's own link keeps the old behaviour (its offer was chosen
+    # for that product, e.g. Free Fire "2,220" -> OG's "2,200 Diamonds").
+    if (offer_payload and catalog_url in BRAND_LEVEL_URLS and want["nums"]
+            and not _og_match(want, _og_sig(offer_payload.get("title") or ""))):
+        offer_payload = None
     if offer_payload:
         price = offer_payload.get("raw_final_price")
         if not isinstance(price, (int, float)):
@@ -1841,6 +1952,7 @@ ADAPTERS = {
     "moogold.com": adapter_moogold,
     "kinguin.net": adapter_kinguin,
     "joytify.com": adapter_joytify,   # LapakGaming
+    "lapakgaming.com": adapter_joytify,   # [24 Nov] same site/layout; was generic (page-wide lowest price)
     "itemku.com": adapter_itemku,
     "unipin.com": adapter_unipin,
     "offgamers.com": adapter_offgamers,
@@ -2764,6 +2876,7 @@ def main():
                     for comp, u in comp_urls.items():
                         if u and comp not in product["urls"]:
                             product["urls"][comp] = {"url": u}
+                            BRAND_LEVEL_URLS.add(u)
                             applied += 1
             if applied:
                 print(f"Applied {applied} brand URL(s) from {BRAND_URLS_FILE.name}.", flush=True)
