@@ -65,6 +65,6 @@ jobs:
             echo "No price changes to commit."
           else
             git commit -m "Update prices (automated scrape) [skip ci]"
-            git pull --rebase rebase --autostash origin "${GITHUB_REF_NAME}"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
             git push
           fi
