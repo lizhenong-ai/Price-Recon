@@ -2912,13 +2912,25 @@ def main():
         # overwrite an existing REAL price with N/A — a site that fails on a given
         # run (e.g. SEAGM/G2A on a datacenter IP, or a transient block) should not
         # wipe the last good value. A real price still overwrites N/A as normal.
+        # [25 Nov] ...but only when that old price is believable. A scrape that now (correctly) finds the card sold
+        # out / not sold was leaving yesterday's WRONG price stuck forever (Eneba Steam EUR10 "$1.00", OG Riot Points
+        # EUR 100 "$27.71"). So an old price under half or over double the other sellers' median is dropped.
+        def _plausible(old, row, me):
+            others = sorted(x for k, x in row.items()
+                            if k != me and isinstance(x, (int, float)) and x > 0)
+            if not others:
+                return True
+            n = len(others)
+            med = others[n // 2] if n % 2 else (others[n // 2 - 1] + others[n // 2]) / 2
+            return 0.5 * med <= old <= 2 * med
         for sheet, prods in results.items():
             for pname, comps in prods.items():
                 dst = base.setdefault(sheet, {}).setdefault(pname, {})
                 for c, v in comps.items():
                     prev = dst.get(c)
                     if v == NA and isinstance(prev, (int, float)) and prev > 0:
-                        continue                      # keep the existing real price
+                        if _plausible(prev, {**dst, **comps}, c):
+                            continue                  # keep the existing real price
                     dst[c] = v
         # prune any now-empty product/sheet dicts
         for sheet in list(base.keys()):
