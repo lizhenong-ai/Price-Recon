@@ -50,6 +50,7 @@ ROOT = Path(__file__).resolve().parent
 URLS_FILE = ROOT / "urls.json"
 CUSTOM_FILE = ROOT / "custom_products.json"   # user-added products (dashboard export)
 BRAND_URLS_FILE = ROOT / "brand_urls.json"    # one product-page URL per brand+competitor
+G2G_MIN_STOCK = 5          # [26 Nov] G2G offers with fewer units than this are skipped (see _g2g_try)
 BRAND_LEVEL_URLS = set()   # [24 Nov] URLs shared by a whole brand (their pinned offer is not "our" card)
 OUT_FILE = ROOT / "prices.json"
 HISTORY_FILE = ROOT / "price_history.json"   # daily snapshots for the date picker
@@ -493,6 +494,9 @@ _ENEBA_JS = r"""
   // card by face value (number [+ face currency]) then read the $ buyer price.
   const numRes = (nums || []).map(n => new RegExp('(?<![\\d.])' + n + '(?![\\d.])'));
   const curRe = cur ? new RegExp('\\b' + cur + '\\b', 'i') : null;
+  // [26 Nov] "600 + 60 UC" -> nums [600, 60, 660]: the card is "660 UC" (or "600 + 60 UC"), never "60 UC".
+  const _ns = (nums || []).slice().sort((a, b) => b - a);
+  const total = (_ns.length >= 3 && Math.abs(_ns[0] - _ns.slice(1).reduce((a, b) => a + b, 0)) < 1e-9) ? _ns[0] : null;
   // Detect a denomination GRID: many short "<number> <CUR>" face-value cards
   // (e.g. "45.50 USD", "200 QAR"). If the page has a grid but our denomination
   // isn't one of the cards, the product simply isn't offered in that size -> N/A
@@ -544,7 +548,8 @@ _ENEBA_JS = r"""
     }
     const hasCur = curRe ? curRe.test(t) : false;
     if (hasCur) s += 1;                          // currency match is a strong signal
-    labels.push({ el, score: s, len: t.length, hasCur });
+    const full = total === null || hit.has(total) || _ns.slice(1).every(n => hit.has(n));
+    labels.push({ el, score: s, len: t.length, hasCur, full });
   }
   if (!labels.length) return hasGrid ? { gridNoMatch: true } : null;
   // When the page is a denomination grid AND we know the face currency (e.g. GBP),
@@ -554,8 +559,9 @@ _ENEBA_JS = r"""
   // filter when at least one currency-matched card exists, so pages that label cards
   // by number alone (or by "$") still match.
   let pool = labels;
+  if (total !== null && labels.some(l => l.full)) pool = labels.filter(l => l.full);
   if (hasGrid && curRe) {
-    const withCur = labels.filter(l => l.hasCur);
+    const withCur = pool.filter(l => l.hasCur);
     if (withCur.length) pool = withCur;
   }
   pool.sort((a, b) => b.score - a.score || a.len - b.len);   // best candidates first
@@ -1140,6 +1146,15 @@ def _g2g_try(api_url, rule=None):
             with urllib.request.urlopen(req, timeout=20, context=ctx) as r:
                 data = json.loads(r.read().decode())
             results = (data.get("payload") or {}).get("results") or []
+            # [26 Nov] Ignore tiny-stock sellers (< 5 units): one seller with 2 left at $39.73 made Genshin
+            # 6,480 + 1,600 look like $39.75 while the real G2G market was $59.99+. If every offer is tiny
+            # stock, keep them all rather than show N/A.
+            def _qty(o):
+                q = o.get("available_qty")
+                return q if isinstance(q, (int, float)) else None
+            big = [o for o in results if _qty(o) is None or _qty(o) >= G2G_MIN_STOCK]
+            if big:
+                results = big
             if rule:
                 # Free-text offers: keep titles matching the rule. converted_unit_price
                 # is already per unit, so bundle counts in titles must not divide it.
@@ -1350,9 +1365,15 @@ def fetch_og_price_sync(catalog_url, pname=""):
               f"candidates={len(candidates)}", flush=True)
 
     instock, allprices = [], []
-    for c in candidates:
-        if not _og_match(want, _og_sig(c["title"])):
-            continue
+    matched = [c for c in candidates if _og_match(want, _og_sig(c["title"]))]
+    # [26 Nov] Same numbers, different plan ("Surfshark One 2 Years" vs "Surfshark VPN 2 Years"): keep the
+    # titles sharing the most words with our product name, so a cheaper sibling plan isn't picked.
+    if len(matched) > 1:
+        _w = lambda t: set(re.findall(r"[a-z]{2,}", (t or "").lower()))
+        pw = _w(pname)
+        best = max(len(pw & _w(c["title"])) for c in matched)
+        matched = [c for c in matched if len(pw & _w(c["title"])) == best]
+    for c in matched:
         if getattr(ARGS, "debug", False):
             print(f"    [OG-DEBUG] {pname!r} :: {c['title']!r} "
                   f"stock={c['stock']} raw_final_price={c['price']}", flush=True)
@@ -2621,6 +2642,16 @@ async def fetch_one(context, task, results, report):
             if result is not None:
                 value, cur = result
                 usd = to_usd(value, cur)
+                # [26 Nov] Face-value guard for currency gift cards ("Razer Gold AUD100"): a price under half or
+                # over double the card's face value in USD is a misread (Eneba from a US IP gave AUD100 = $16.94,
+                # the AUD 25 card). Record N/A rather than a wrong number.
+                _fv = (to_usd(denom["amount"], denom["currency"])
+                       if denom.get("amount") and denom.get("currency") else None)
+                if usd and _fv and not (0.5 * _fv <= usd <= 2 * _fv):
+                    print(f"  [face-guard] {comp} {task['pname']}: ${usd:.2f} vs face ${_fv:.2f} -> N/A", flush=True)
+                    results.setdefault(task["sheet"], {}).setdefault(task["pname"], {})[comp] = NA
+                    report["ok"] += 1
+                    return
                 if usd is not None and usd > 0:
                     results.setdefault(task["sheet"], {}).setdefault(task["pname"], {})[comp] = usd
                     report["ok"] += 1
