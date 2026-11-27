@@ -1681,6 +1681,9 @@ def cheapest_per_lock(offers, target):
 DEFAULT_COUNT_RE = r"(?:\bx|[×*])\s*(\d[\d,]*)\b|(\d[\d,]*)\s*[x×*](?![a-z0-9])|\b(\d[\d,]*)\s*x\b"
 
 
+UNIT_MIX_FLOOR = 0.1    # a bundle-divided price under 1/10 of the median per-item price is a unit mix-up
+
+
 def cheapest_matching(offers, rule):
     """Secondary-market listings are free-text, so a product can carry a match
     rule in urls.json: {"include": regex, "exclude": regex, "count": regex whose
@@ -1690,7 +1693,7 @@ def cheapest_matching(offers, rule):
     exc = re.compile(rule["exclude"], re.I) if rule.get("exclude") else None
     cnt = re.compile(rule.get("count") or DEFAULT_COUNT_RE, re.I | re.M)
     per = float(rule.get("per") or 1)
-    best = None
+    vals = []
     for title, price, units in offers:
         if not price or price <= 0 or not inc.search(title) or (exc and exc.search(title)):
             continue
@@ -1702,9 +1705,19 @@ def cheapest_matching(offers, rule):
                 n = float(groups[0].replace(",", ""))
                 if len(groups) > 1 and groups[1].lower() == "k":
                     n *= 1000
-        v = price / (units or 1) / n * per
-        best = v if best is None or v < best else best
-    return best
+        vals.append((price / (units or 1) / n * per, price / (units or 1) * per, n))
+    if not vals:
+        return None
+    # [27 Nov] Unit-mix guard: sellers mix "price per item" and "price per bundle", so a title count
+    # can divide a price that was already per item (Eldorado "Herbal Bandage x100 = 2 $" at $0.02/unit
+    # read as $0.0002, 100x too cheap). With 3+ listings, a bundle-divided price under 1/10 of the
+    # median is taken as already per item (undivided). Listings with no count are never touched.
+    if len(vals) >= 3:
+        srt = sorted(v for v, _, _ in vals)
+        k = len(srt)
+        med = srt[k // 2] if k % 2 else (srt[k // 2 - 1] + srt[k // 2]) / 2
+        vals = [(raw if n > 1 and v < med * UNIT_MIX_FLOOR else v, raw, n) for v, raw, n in vals]
+    return min(v for v, _, _ in vals)
 
 
 async def adapter_playerauctions(page, url, denom):
@@ -1745,7 +1758,10 @@ async def adapter_playerauctions(page, url, denom):
             if n > 1:
                 tm = re.search(r"\$\s*[\d,.]+\s*/\s*\d+\s*\$\s*([\d,.]+)", text)
                 total = float(tm.group(1).replace(",", "")) if tm else None
-                if not (total and abs(total - each * n) <= max(0.02, 0.02 * total)):
+                # [27 Nov] PA rounds the per-item price to 3 decimals ("S15-300* ... $0.017 / 1  $5.00":
+                # 300 x 0.017 = 5.10 vs 5.00), so also accept it when total / n rounds to the shown price.
+                if not (total and (abs(total - each * n) <= max(0.02, 0.02 * total)
+                                   or abs(total / n - each) <= 0.0005 + 1e-9)):
                     each /= n
             per_item.append((text, each, 1))
         best = cheapest_matching(per_item, dict(rule, count=r"(?!)"))
